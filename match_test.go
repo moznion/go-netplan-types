@@ -12,9 +12,7 @@ func TestSerializeEmptyMatch(t *testing.T) {
 
 	marshal, err := yaml.Marshal(&given)
 	assert.NoError(t, err)
-	assert.EqualValues(t, []byte(`name: null
-macaddress: null
-driver: null
+	assert.EqualValues(t, []byte(`{}
 `), marshal)
 
 	var unmarshal Match

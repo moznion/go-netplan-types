@@ -1,7 +1,7 @@
 package netplan
 
 type PhysicalDevice struct {
-	Match     *Match         `yaml:"match"`
-	SetName   *NilableString `yaml:"set-name"`
-	WakeOnLAN *NilableBool   `yaml:"wakeonlan"`
+	Match     *Match         `yaml:"match,omitempty"`
+	SetName   *NilableString `yaml:"set-name,omitempty"`
+	WakeOnLAN *NilableBool   `yaml:"wakeonlan,omitempty"`
 }

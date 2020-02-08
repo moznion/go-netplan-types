@@ -12,9 +12,7 @@ func TestSerializeEmptyPhysicalDevice(t *testing.T) {
 
 	marshal, err := yaml.Marshal(&given)
 	assert.NoError(t, err)
-	assert.EqualValues(t, []byte(`match: null
-set-name: null
-wakeonlan: null
+	assert.EqualValues(t, []byte(`{}
 `), marshal)
 
 	var unmarshal PhysicalDevice
@@ -38,8 +36,6 @@ func TestSerializePhysicalDevice(t *testing.T) {
 	assert.NoError(t, err)
 	assert.EqualValues(t, []byte(`match:
   name: name
-  macaddress: null
-  driver: null
 set-name: setname
 wakeonlan: false
 `), marshal)

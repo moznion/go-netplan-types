@@ -1,7 +1,7 @@
 package netplan
 
 type Match struct {
-	Name       *NilableString `yaml:"name"`
-	MacAddress *NilableString `yaml:"macaddress"`
-	Driver     *NilableString `yaml:"driver"`
+	Name       *NilableString `yaml:"name,omitempty"`
+	MacAddress *NilableString `yaml:"macaddress,omitempty"`
+	Driver     *NilableString `yaml:"driver,omitempty"`
 }

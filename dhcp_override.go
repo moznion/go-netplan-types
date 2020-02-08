@@ -1,12 +1,12 @@
 package netplan
 
 type DHCPOverride struct {
-	UseDNS       *NilableBool   `yaml:"use-dns"`
-	UseNTP       *NilableBool   `yaml:"use-ntp"`
-	SendHostname *NilableBool   `yaml:"send-hostname"`
-	UseHostname  *NilableBool   `yaml:"use-hostname"`
-	UseMTU       *NilableBool   `yaml:"use-mtu"`
-	Hostname     *NilableString `yaml:"hostname"`
-	UseRoutes    *NilableBool   `yaml:"use-routes"`
-	RouteMetric  *NilableUint64 `yaml:"route-metric"`
+	UseDNS       *NilableBool   `yaml:"use-dns,omitempty"`
+	UseNTP       *NilableBool   `yaml:"use-ntp,omitempty"`
+	SendHostname *NilableBool   `yaml:"send-hostname,omitempty"`
+	UseHostname  *NilableBool   `yaml:"use-hostname,omitempty"`
+	UseMTU       *NilableBool   `yaml:"use-mtu,omitempty"`
+	Hostname     *NilableString `yaml:"hostname,omitempty"`
+	UseRoutes    *NilableBool   `yaml:"use-routes,omitempty"`
+	RouteMetric  *NilableUint64 `yaml:"route-metric,omitempty"`
 }

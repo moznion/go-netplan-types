@@ -12,14 +12,7 @@ func TestSerializeEmptyDHCPOverride(t *testing.T) {
 
 	marshal, err := yaml.Marshal(&given)
 	assert.NoError(t, err)
-	assert.EqualValues(t, []byte(`use-dns: null
-use-ntp: null
-send-hostname: null
-use-hostname: null
-use-mtu: null
-hostname: null
-use-routes: null
-route-metric: null
+	assert.EqualValues(t, []byte(`{}
 `), marshal)
 
 	var unmarshal DHCPOverride

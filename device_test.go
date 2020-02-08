@@ -12,39 +12,13 @@ func TestSerializeEmptyDevice(t *testing.T) {
 
 	marshal, err := yaml.Marshal(&given)
 	assert.NoError(t, err)
-	assert.EqualValues(t, []byte(`dhcp4: null
-dhcp6: null
-ipv6-privacy: null
-link-local: []
-critical: null
-dhcp-identifier: null
-dhcp4-overrides: null
-dhcp6-overrides: null
-accept-ra: null
-addresses: []
-gateway4: null
-gateway6: null
-nameservers: null
-macaddress: null
-mtu: null
-optional: null
-optional-addresses: []
-routes: []
-routing-policy: []
+	assert.EqualValues(t, []byte(`{}
 `), marshal)
 
 	var unmarshal Device
 	err = yaml.Unmarshal(marshal, &unmarshal)
 	assert.NoError(t, err)
-	assert.EqualValues(t, Device{
-		LinkLocal:         []LinkLocal{},
-		Addresses:         []*Address{},
-		OptionalAddresses: []string{},
-		Routing: Routing{
-			Routes:        []*Route{},
-			RoutingPolicy: []*RoutingPolicy{},
-		},
-	}, unmarshal)
+	assert.EqualValues(t, given, unmarshal)
 }
 
 func TestSerializeDevice(t *testing.T) {
@@ -139,13 +113,11 @@ dhcp4-overrides:
   hostname: host
   use-routes: true
   route-metric: 100
-dhcp6-overrides: null
 accept-ra: false
 addresses:
 - 192.0.2.1/32
 - 192.0.2.2/32
 gateway4: 192.0.2.254
-gateway6: null
 nameservers:
   search:
   - domain-1
@@ -155,37 +127,17 @@ nameservers:
 macaddress: de:ad:be:ef:ca:fe
 mtu: 1500
 optional: false
-optional-addresses: []
 routes:
 - from: 198.0.2.1/32
   to: 0.0.0.0/0
-  via: null
-  on-link: null
-  metric: null
-  type: null
-  scope: null
-  table: null
 - from: 198.0.2.2/32
   to: 0.0.0.0/0
-  via: null
-  on-link: null
-  metric: null
-  type: null
-  scope: null
-  table: null
 routing-policy:
 - from: 192.0.2.0/24
-  to: null
-  table: null
-  priority: null
-  mark: null
-  type-of-service: null
 `), marshal)
 
 	var unmarshal Device
 	err = yaml.Unmarshal(marshal, &unmarshal)
 	assert.NoError(t, err)
-
-	given.OptionalAddresses = []string{}
 	assert.EqualValues(t, given, unmarshal)
 }

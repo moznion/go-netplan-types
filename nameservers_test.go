@@ -12,17 +12,13 @@ func TestSerializeEmptyNameservers(t *testing.T) {
 
 	marshal, err := yaml.Marshal(&given)
 	assert.NoError(t, err)
-	assert.EqualValues(t, []byte(`search: []
-addresses: []
+	assert.EqualValues(t, []byte(`{}
 `), marshal)
 
 	var unmarshal Nameservers
 	err = yaml.Unmarshal(marshal, &unmarshal)
 	assert.NoError(t, err)
-	assert.EqualValues(t, Nameservers{
-		Search:    []string{},
-		Addresses: []string{},
-	}, unmarshal)
+	assert.EqualValues(t, given, unmarshal)
 }
 
 func TestSerializeNameservers(t *testing.T) {

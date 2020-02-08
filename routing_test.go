@@ -12,17 +12,13 @@ func TestSerializeEmptyRouting(t *testing.T) {
 
 	marshal, err := yaml.Marshal(&given)
 	assert.NoError(t, err)
-	assert.EqualValues(t, []byte(`routes: []
-routing-policy: []
+	assert.EqualValues(t, []byte(`{}
 `), marshal)
 
 	var unmarshal Routing
 	err = yaml.Unmarshal(marshal, &unmarshal)
 	assert.NoError(t, err)
-	assert.EqualValues(t, Routing{
-		Routes:        []*Route{},
-		RoutingPolicy: []*RoutingPolicy{},
-	}, unmarshal)
+	assert.EqualValues(t, given, unmarshal)
 }
 
 func TestSerializeRouting(t *testing.T) {
@@ -68,27 +64,11 @@ func TestSerializeRouting(t *testing.T) {
 	assert.EqualValues(t, []byte(`routes:
 - from: 192.0.2.1/32
   to: 0.0.0.0/0
-  via: null
-  on-link: null
-  metric: null
-  type: null
-  scope: null
-  table: null
 - from: 192.0.2.2/32
   to: 0.0.0.0/0
-  via: null
-  on-link: null
-  metric: null
-  type: null
-  scope: null
-  table: null
 routing-policy:
 - from: 192.0.2.100/0
   to: 0.0.0.0/0
-  table: null
-  priority: null
-  mark: null
-  type-of-service: null
 `), marshal)
 
 	var unmarshal Routing

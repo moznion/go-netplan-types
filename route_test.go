@@ -12,14 +12,7 @@ func TestSerializeEmptyRoute(t *testing.T) {
 
 	marshal, err := yaml.Marshal(&given)
 	assert.NoError(t, err)
-	assert.EqualValues(t, []byte(`from: null
-to: null
-via: null
-on-link: null
-metric: null
-type: null
-scope: null
-table: null
+	assert.EqualValues(t, []byte(`{}
 `), marshal)
 
 	var unmarshal Route
