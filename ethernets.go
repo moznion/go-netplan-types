@@ -1,8 +1,8 @@
 package netplan
 
 type Ethernet struct {
-	Device         `yaml:"-,inline,omitempty"`
-	PhysicalDevice `yaml:"-,inline,omitempty"`
+	Device         `yaml:"-,inline"`
+	PhysicalDevice `yaml:"-,inline"`
 	Auth           *Authentication `yaml:"auth,omitempty"`
 }
 
