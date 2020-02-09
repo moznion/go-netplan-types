@@ -26,11 +26,11 @@ func TestSerializeEmptyWifi(t *testing.T) {
 func TestSerializeWifi(t *testing.T) {
 	given := Wifi{
 		Device: Device{
-			DHCP4: go_netplan_types.NilableBoolOf(true),
-			DHCP6: go_netplan_types.NilableBoolOf(false),
+			DHCP4: go_netplan_types.NillableBoolOf(true),
+			DHCP6: go_netplan_types.NillableBoolOf(false),
 		},
 		PhysicalDevice: PhysicalDevice{
-			WakeOnLAN: go_netplan_types.NilableBoolOf(false),
+			WakeOnLAN: go_netplan_types.NillableBoolOf(false),
 		},
 		AccessPoints: map[string]*AccessPoint{
 			"opennetwork": {},

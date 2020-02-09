@@ -27,16 +27,16 @@ func TestSerializeRoutingPolicy(t *testing.T) {
 	given := RoutingPolicy{
 		From: &Address{
 			Address:   "192.0.2.1",
-			PrefixLen: go_netplan_types.NilableUint8Of(32),
+			PrefixLen: go_netplan_types.NillableUint8Of(32),
 		},
 		To: &Address{
 			Address:   "0.0.0.0",
-			PrefixLen: go_netplan_types.NilableUint8Of(0),
+			PrefixLen: go_netplan_types.NillableUint8Of(0),
 		},
-		Table:         go_netplan_types.NilableUint64Of(200),
-		Priority:      go_netplan_types.NilableUint32Of(100),
-		Mark:          go_netplan_types.NilableUint64Of(1),
-		TypeOfService: go_netplan_types.NilableUint8Of(8),
+		Table:         go_netplan_types.NillableUint64Of(200),
+		Priority:      go_netplan_types.NillableUint32Of(100),
+		Mark:          go_netplan_types.NillableUint64Of(1),
+		TypeOfService: go_netplan_types.NillableUint8Of(8),
 	}
 
 	marshal, err := yaml.Marshal(&given)

@@ -28,48 +28,48 @@ func TestSerializeNetworkConfig(t *testing.T) {
 		Ethernets: Ethernets{
 			"eth0": &Ethernet{
 				Device: Device{
-					DHCP4: go_netplan_types.NilableBoolOf(true),
-					DHCP6: go_netplan_types.NilableBoolOf(false),
+					DHCP4: go_netplan_types.NillableBoolOf(true),
+					DHCP6: go_netplan_types.NillableBoolOf(false),
 				},
 			},
 		},
 		Wifis: Wifis{
 			"wlan0": &Wifi{
 				Device: Device{
-					DHCP4: go_netplan_types.NilableBoolOf(true),
-					DHCP6: go_netplan_types.NilableBoolOf(false),
+					DHCP4: go_netplan_types.NillableBoolOf(true),
+					DHCP6: go_netplan_types.NillableBoolOf(false),
 				},
 			},
 		},
 		Bridges: Bridges{
 			"bridge0": &Bridge{
 				Device: Device{
-					DHCP4: go_netplan_types.NilableBoolOf(true),
-					DHCP6: go_netplan_types.NilableBoolOf(false),
+					DHCP4: go_netplan_types.NillableBoolOf(true),
+					DHCP6: go_netplan_types.NillableBoolOf(false),
 				},
 			},
 		},
 		Bonds: Bonds{
 			"bond0": &Bond{
 				Device: Device{
-					DHCP4: go_netplan_types.NilableBoolOf(true),
-					DHCP6: go_netplan_types.NilableBoolOf(false),
+					DHCP4: go_netplan_types.NillableBoolOf(true),
+					DHCP6: go_netplan_types.NillableBoolOf(false),
 				},
 			},
 		},
 		Tunnels: Tunnels{
 			"tunnel0": &Tunnel{
 				Device: Device{
-					DHCP4: go_netplan_types.NilableBoolOf(true),
-					DHCP6: go_netplan_types.NilableBoolOf(false),
+					DHCP4: go_netplan_types.NillableBoolOf(true),
+					DHCP6: go_netplan_types.NillableBoolOf(false),
 				},
 			},
 		},
 		VLANs: VLANs{
 			"vlan0": &VLAN{
 				Device: Device{
-					DHCP4: go_netplan_types.NilableBoolOf(true),
-					DHCP6: go_netplan_types.NilableBoolOf(false),
+					DHCP4: go_netplan_types.NillableBoolOf(true),
+					DHCP6: go_netplan_types.NillableBoolOf(false),
 				},
 			},
 		},

@@ -25,12 +25,12 @@ func TestSerializeEmptyBridge(t *testing.T) {
 func TestSerializeBridge(t *testing.T) {
 	given := Bridge{
 		Device: Device{
-			DHCP4: go_netplan_types.NilableBoolOf(true),
-			DHCP6: go_netplan_types.NilableBoolOf(false),
+			DHCP4: go_netplan_types.NillableBoolOf(true),
+			DHCP6: go_netplan_types.NillableBoolOf(false),
 		},
 		Interfaces: []string{"vlan1", "vlan2"},
 		Parameters: &BridgeParameters{
-			STP: go_netplan_types.NilableBoolOf(false),
+			STP: go_netplan_types.NillableBoolOf(false),
 		},
 	}
 

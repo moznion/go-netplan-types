@@ -24,7 +24,7 @@ func TestSerializeEmptyAccessPoint(t *testing.T) {
 
 func TestSerializeAccessPoint(t *testing.T) {
 	given := AccessPoint{
-		Password: go_netplan_types.NilableStringOf("pswd"),
+		Password: go_netplan_types.NillableStringOf("pswd"),
 		Mode:     InfrastructureAccessPointMode(),
 	}
 

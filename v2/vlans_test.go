@@ -26,11 +26,11 @@ func TestSerializeEmptyVLAN(t *testing.T) {
 func TestSerializeVLAN(t *testing.T) {
 	given := VLAN{
 		Device: Device{
-			DHCP4: go_netplan_types.NilableBoolOf(true),
-			DHCP6: go_netplan_types.NilableBoolOf(false),
+			DHCP4: go_netplan_types.NillableBoolOf(true),
+			DHCP6: go_netplan_types.NillableBoolOf(false),
 		},
-		ID:   go_netplan_types.NilableUint16Of(1),
-		Link: go_netplan_types.NilableStringOf("link-1"),
+		ID:   go_netplan_types.NillableUint16Of(1),
+		Link: go_netplan_types.NillableStringOf("link-1"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

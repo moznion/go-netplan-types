@@ -27,20 +27,20 @@ func TestSerializeRoute(t *testing.T) {
 	given := Route{
 		From: &Address{
 			Address:   "192.0.2.1",
-			PrefixLen: go_netplan_types.NilableUint8Of(32),
+			PrefixLen: go_netplan_types.NillableUint8Of(32),
 		},
 		To: &Address{
 			Address:   "0.0.0.0",
-			PrefixLen: go_netplan_types.NilableUint8Of(0),
+			PrefixLen: go_netplan_types.NillableUint8Of(0),
 		},
 		Via: &Address{
 			Address: "192.0.2.2",
 		},
-		OnLink: go_netplan_types.NilableBoolOf(false),
-		Metric: go_netplan_types.NilableUint64Of(100),
+		OnLink: go_netplan_types.NillableBoolOf(false),
+		Metric: go_netplan_types.NillableUint64Of(100),
 		Type:   UnicastRouteType(),
 		Scope:  LinkRouteScope(),
-		Table:  go_netplan_types.NilableUint64Of(200),
+		Table:  go_netplan_types.NillableUint64Of(200),
 	}
 
 	marshal, err := yaml.Marshal(&given)

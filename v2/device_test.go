@@ -24,64 +24,64 @@ func TestSerializeEmptyDevice(t *testing.T) {
 
 func TestSerializeDevice(t *testing.T) {
 	given := Device{
-		DHCP4:          go_netplan_types.NilableBoolOf(true),
-		DHCP6:          go_netplan_types.NilableBoolOf(false),
-		IPv6Privacy:    go_netplan_types.NilableBoolOf(false),
+		DHCP4:          go_netplan_types.NillableBoolOf(true),
+		DHCP6:          go_netplan_types.NillableBoolOf(false),
+		IPv6Privacy:    go_netplan_types.NillableBoolOf(false),
 		LinkLocal:      []LinkLocal{IPv4LinkLocal},
-		Critical:       go_netplan_types.NilableBoolOf(true),
-		DHCPIdentifier: go_netplan_types.NilableStringOf("mac"),
+		Critical:       go_netplan_types.NillableBoolOf(true),
+		DHCPIdentifier: go_netplan_types.NillableStringOf("mac"),
 		DHCP4Overrides: &DHCPOverride{
-			UseDNS:       go_netplan_types.NilableBoolOf(true),
-			UseNTP:       go_netplan_types.NilableBoolOf(true),
-			SendHostname: go_netplan_types.NilableBoolOf(true),
-			UseHostname:  go_netplan_types.NilableBoolOf(true),
-			UseMTU:       go_netplan_types.NilableBoolOf(true),
-			Hostname:     go_netplan_types.NilableStringOf("host"),
-			UseRoutes:    go_netplan_types.NilableBoolOf(true),
-			RouteMetric:  go_netplan_types.NilableUint64Of(100),
+			UseDNS:       go_netplan_types.NillableBoolOf(true),
+			UseNTP:       go_netplan_types.NillableBoolOf(true),
+			SendHostname: go_netplan_types.NillableBoolOf(true),
+			UseHostname:  go_netplan_types.NillableBoolOf(true),
+			UseMTU:       go_netplan_types.NillableBoolOf(true),
+			Hostname:     go_netplan_types.NillableStringOf("host"),
+			UseRoutes:    go_netplan_types.NillableBoolOf(true),
+			RouteMetric:  go_netplan_types.NillableUint64Of(100),
 		},
 		DHCP6Overrides: nil,
-		AcceptRA:       go_netplan_types.NilableBoolOf(false),
+		AcceptRA:       go_netplan_types.NillableBoolOf(false),
 		Addresses: []*Address{
 			{
 				Address:   "192.0.2.1",
-				PrefixLen: go_netplan_types.NilableUint8Of(32),
+				PrefixLen: go_netplan_types.NillableUint8Of(32),
 			},
 			{
 				Address:   "192.0.2.2",
-				PrefixLen: go_netplan_types.NilableUint8Of(32),
+				PrefixLen: go_netplan_types.NillableUint8Of(32),
 			},
 		},
-		Gateway4: go_netplan_types.NilableStringOf("192.0.2.254"),
+		Gateway4: go_netplan_types.NillableStringOf("192.0.2.254"),
 		Gateway6: nil,
 		NameServers: &Nameservers{
 			Search:    []string{"domain-1", "domain-2"},
 			Addresses: []string{"8.8.8.8"},
 		},
-		MacAddress:        go_netplan_types.NilableStringOf("de:ad:be:ef:ca:fe"),
-		MTU:               go_netplan_types.NilableUint64Of(1500),
-		Optional:          go_netplan_types.NilableBoolOf(false),
+		MacAddress:        go_netplan_types.NillableStringOf("de:ad:be:ef:ca:fe"),
+		MTU:               go_netplan_types.NillableUint64Of(1500),
+		Optional:          go_netplan_types.NillableBoolOf(false),
 		OptionalAddresses: nil,
 		Routing: Routing{
 			Routes: []*Route{
 				{
 					From: &Address{
 						Address:   "198.0.2.1",
-						PrefixLen: go_netplan_types.NilableUint8Of(32),
+						PrefixLen: go_netplan_types.NillableUint8Of(32),
 					},
 					To: &Address{
 						Address:   "0.0.0.0",
-						PrefixLen: go_netplan_types.NilableUint8Of(0),
+						PrefixLen: go_netplan_types.NillableUint8Of(0),
 					},
 				},
 				{
 					From: &Address{
 						Address:   "198.0.2.2",
-						PrefixLen: go_netplan_types.NilableUint8Of(32),
+						PrefixLen: go_netplan_types.NillableUint8Of(32),
 					},
 					To: &Address{
 						Address:   "0.0.0.0",
-						PrefixLen: go_netplan_types.NilableUint8Of(0),
+						PrefixLen: go_netplan_types.NillableUint8Of(0),
 					},
 				},
 			},
@@ -89,7 +89,7 @@ func TestSerializeDevice(t *testing.T) {
 				{
 					From: &Address{
 						Address:   "192.0.2.0",
-						PrefixLen: go_netplan_types.NilableUint8Of(24),
+						PrefixLen: go_netplan_types.NillableUint8Of(24),
 					},
 				},
 			},

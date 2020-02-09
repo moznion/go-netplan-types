@@ -25,9 +25,9 @@ func TestSerializeEmptyMatch(t *testing.T) {
 
 func TestSerializeMatch(t *testing.T) {
 	given := Match{
-		Name:       go_netplan_types.NilableStringOf("name"),
-		MacAddress: go_netplan_types.NilableStringOf(""),
-		Driver:     go_netplan_types.NilableStringOf("driver"),
+		Name:       go_netplan_types.NillableStringOf("name"),
+		MacAddress: go_netplan_types.NillableStringOf(""),
+		Driver:     go_netplan_types.NillableStringOf("driver"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

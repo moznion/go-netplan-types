@@ -26,8 +26,8 @@ func TestSerializeEmptyBond(t *testing.T) {
 func TestSerializeBond(t *testing.T) {
 	given := Bond{
 		Device: Device{
-			DHCP4: go_netplan_types.NilableBoolOf(true),
-			DHCP6: go_netplan_types.NilableBoolOf(false),
+			DHCP4: go_netplan_types.NillableBoolOf(true),
+			DHCP6: go_netplan_types.NillableBoolOf(false),
 		},
 		Parameters: &BondParameters{
 			Mode: ActiveBackupBondMode(),

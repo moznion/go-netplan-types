@@ -25,14 +25,14 @@ func TestSerializeEmptyAuthentication(t *testing.T) {
 func TestSerializeAuthentication(t *testing.T) {
 	given := Authentication{
 		KeyManagement:     EAPKeyManagement(),
-		Password:          go_netplan_types.NilableStringOf("pswd"),
+		Password:          go_netplan_types.NillableStringOf("pswd"),
 		Method:            TLSAuthMethod(),
-		Identity:          go_netplan_types.NilableStringOf("ident"),
-		AnonymousIdentity: go_netplan_types.NilableStringOf("anon-ident"),
-		CACertificate:     go_netplan_types.NilableStringOf("ca-cert"),
-		ClientCertificate: go_netplan_types.NilableStringOf("client-cert"),
-		ClientKey:         go_netplan_types.NilableStringOf("client-key"),
-		ClientKeyPassword: go_netplan_types.NilableStringOf("client-key-pswd"),
+		Identity:          go_netplan_types.NillableStringOf("ident"),
+		AnonymousIdentity: go_netplan_types.NillableStringOf("anon-ident"),
+		CACertificate:     go_netplan_types.NillableStringOf("ca-cert"),
+		ClientCertificate: go_netplan_types.NillableStringOf("client-cert"),
+		ClientKey:         go_netplan_types.NillableStringOf("client-key"),
+		ClientKeyPassword: go_netplan_types.NillableStringOf("client-key-pswd"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

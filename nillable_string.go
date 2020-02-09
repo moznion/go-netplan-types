@@ -1,25 +1,25 @@
 package go_netplan_types
 
-type NilableString struct {
+type NillableString struct {
 	val        string
 	isAssigned bool
 }
 
-func NilableStringOf(val string) *NilableString {
-	return &NilableString{
+func NillableStringOf(val string) *NillableString {
+	return &NillableString{
 		val:        val,
 		isAssigned: true,
 	}
 }
 
-func (ns *NilableString) MarshalYAML() (interface{}, error) {
+func (ns *NillableString) MarshalYAML() (interface{}, error) {
 	if ns.isAssigned {
 		return ns.val, nil
 	}
 	return nil, nil
 }
 
-func (ns *NilableString) UnmarshalYAML(unmarshal func(interface{}) error) error {
+func (ns *NillableString) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val string
 	if err := unmarshal(&val); err != nil {
 		return err

@@ -25,14 +25,14 @@ func TestSerializeEmptyDHCPOverride(t *testing.T) {
 
 func TestSerializeDHCPOverride(t *testing.T) {
 	given := DHCPOverride{
-		UseDNS:       go_netplan_types.NilableBoolOf(false),
-		UseNTP:       go_netplan_types.NilableBoolOf(true),
-		SendHostname: go_netplan_types.NilableBoolOf(false),
-		UseHostname:  go_netplan_types.NilableBoolOf(true),
-		UseMTU:       go_netplan_types.NilableBoolOf(false),
-		Hostname:     go_netplan_types.NilableStringOf("host"),
-		UseRoutes:    go_netplan_types.NilableBoolOf(true),
-		RouteMetric:  go_netplan_types.NilableUint64Of(100),
+		UseDNS:       go_netplan_types.NillableBoolOf(false),
+		UseNTP:       go_netplan_types.NillableBoolOf(true),
+		SendHostname: go_netplan_types.NillableBoolOf(false),
+		UseHostname:  go_netplan_types.NillableBoolOf(true),
+		UseMTU:       go_netplan_types.NillableBoolOf(false),
+		Hostname:     go_netplan_types.NillableStringOf("host"),
+		UseRoutes:    go_netplan_types.NillableBoolOf(true),
+		RouteMetric:  go_netplan_types.NillableUint64Of(100),
 	}
 
 	marshal, err := yaml.Marshal(&given)

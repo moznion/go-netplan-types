@@ -25,8 +25,8 @@ func TestSerializeEmptyTunnelKey(t *testing.T) {
 
 func TestSerializeTunnelKey(t *testing.T) {
 	given := TunnelKey{
-		Input:  go_netplan_types.NilableUint64Of(1),
-		Output: go_netplan_types.NilableUint64Of(2),
+		Input:  go_netplan_types.NillableUint64Of(1),
+		Output: go_netplan_types.NillableUint64Of(2),
 	}
 
 	marshal, err := yaml.Marshal(&given)

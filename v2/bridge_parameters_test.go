@@ -24,14 +24,14 @@ func TestSerializeEmptyBridgeParameters(t *testing.T) {
 
 func TestSerializeBridgeParameters(t *testing.T) {
 	given := BridgeParameters{
-		AgeingTime:   go_netplan_types.NilableUint64Of(1),
-		Priority:     go_netplan_types.NilableUint32Of(2),
-		PortPriority: go_netplan_types.NilableUint8Of(3),
-		ForwardDelay: go_netplan_types.NilableUint64Of(4),
-		HelloTime:    go_netplan_types.NilableUint64Of(5),
-		MaxAge:       go_netplan_types.NilableUint64Of(6),
-		PathCost:     go_netplan_types.NilableUint64Of(7),
-		STP:          go_netplan_types.NilableBoolOf(false),
+		AgeingTime:   go_netplan_types.NillableUint64Of(1),
+		Priority:     go_netplan_types.NillableUint32Of(2),
+		PortPriority: go_netplan_types.NillableUint8Of(3),
+		ForwardDelay: go_netplan_types.NillableUint64Of(4),
+		HelloTime:    go_netplan_types.NillableUint64Of(5),
+		MaxAge:       go_netplan_types.NillableUint64Of(6),
+		PathCost:     go_netplan_types.NillableUint64Of(7),
+		STP:          go_netplan_types.NillableBoolOf(false),
 	}
 
 	marshal, err := yaml.Marshal(&given)

@@ -26,12 +26,12 @@ func TestSerializeEmptyEthernet(t *testing.T) {
 func TestSerializeEthernet(t *testing.T) {
 	given := Ethernet{
 		Device: Device{
-			DHCP4: go_netplan_types.NilableBoolOf(true),
-			DHCP6: go_netplan_types.NilableBoolOf(false),
+			DHCP4: go_netplan_types.NillableBoolOf(true),
+			DHCP6: go_netplan_types.NillableBoolOf(false),
 		},
 		PhysicalDevice: PhysicalDevice{
 			Match: &Match{
-				Name: go_netplan_types.NilableStringOf("dev-1"),
+				Name: go_netplan_types.NillableStringOf("dev-1"),
 			},
 		},
 		Auth: &Authentication{

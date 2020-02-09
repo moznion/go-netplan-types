@@ -1,25 +1,25 @@
 package go_netplan_types
 
-type NilableUint32 struct {
+type NillableUint32 struct {
 	val        uint32
 	isAssigned bool
 }
 
-func NilableUint32Of(val uint32) *NilableUint32 {
-	return &NilableUint32{
+func NillableUint32Of(val uint32) *NillableUint32 {
+	return &NillableUint32{
 		val:        val,
 		isAssigned: true,
 	}
 }
 
-func (nu32 *NilableUint32) MarshalYAML() (interface{}, error) {
+func (nu32 *NillableUint32) MarshalYAML() (interface{}, error) {
 	if nu32.isAssigned {
 		return nu32.val, nil
 	}
 	return nil, nil
 }
 
-func (nu32 *NilableUint32) UnmarshalYAML(unmarshal func(interface{}) error) error {
+func (nu32 *NillableUint32) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val uint32
 	if err := unmarshal(&val); err != nil {
 		return err

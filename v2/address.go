@@ -10,7 +10,7 @@ import (
 
 type Address struct {
 	Address   string
-	PrefixLen *go_netplan_types.NilableUint8
+	PrefixLen *go_netplan_types.NillableUint8
 }
 
 func (addr *Address) MarshalYAML() (interface{}, error) {
@@ -38,7 +38,7 @@ func (addr *Address) UnmarshalYAML(unmarshal func(interface{}) error) error {
 		if err != nil {
 			return err
 		}
-		addr.PrefixLen = go_netplan_types.NilableUint8Of(uint8(prefixLen))
+		addr.PrefixLen = go_netplan_types.NillableUint8Of(uint8(prefixLen))
 	}
 
 	return nil

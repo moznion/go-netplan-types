@@ -28,21 +28,21 @@ func TestSerializeRouting(t *testing.T) {
 			{
 				From: &Address{
 					Address:   "192.0.2.1",
-					PrefixLen: go_netplan_types.NilableUint8Of(32),
+					PrefixLen: go_netplan_types.NillableUint8Of(32),
 				},
 				To: &Address{
 					Address:   "0.0.0.0",
-					PrefixLen: go_netplan_types.NilableUint8Of(0),
+					PrefixLen: go_netplan_types.NillableUint8Of(0),
 				},
 			},
 			{
 				From: &Address{
 					Address:   "192.0.2.2",
-					PrefixLen: go_netplan_types.NilableUint8Of(32),
+					PrefixLen: go_netplan_types.NillableUint8Of(32),
 				},
 				To: &Address{
 					Address:   "0.0.0.0",
-					PrefixLen: go_netplan_types.NilableUint8Of(0),
+					PrefixLen: go_netplan_types.NillableUint8Of(0),
 				},
 			},
 		},
@@ -50,11 +50,11 @@ func TestSerializeRouting(t *testing.T) {
 			{
 				From: &Address{
 					Address:   "192.0.2.100",
-					PrefixLen: go_netplan_types.NilableUint8Of(0),
+					PrefixLen: go_netplan_types.NillableUint8Of(0),
 				},
 				To: &Address{
 					Address:   "0.0.0.0",
-					PrefixLen: go_netplan_types.NilableUint8Of(0),
+					PrefixLen: go_netplan_types.NillableUint8Of(0),
 				},
 			},
 		},
