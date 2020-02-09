@@ -3,8 +3,6 @@ package netplan
 import (
 	"testing"
 
-	go_netplan_types "github.com/moznion/go-netplan-types"
-
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -26,11 +24,11 @@ func TestSerializeEmptyVLAN(t *testing.T) {
 func TestSerializeVLAN(t *testing.T) {
 	given := VLAN{
 		Device: Device{
-			DHCP4: go_netplan_types.NillableBoolOf(true),
-			DHCP6: go_netplan_types.NillableBoolOf(false),
+			DHCP4: NillableBoolOf(true),
+			DHCP6: NillableBoolOf(false),
 		},
-		ID:   go_netplan_types.NillableUint16Of(1),
-		Link: go_netplan_types.NillableStringOf("link-1"),
+		ID:   NillableUint16Of(1),
+		Link: NillableStringOf("link-1"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

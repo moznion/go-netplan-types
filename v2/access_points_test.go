@@ -3,7 +3,6 @@ package netplan
 import (
 	"testing"
 
-	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,7 +23,7 @@ func TestSerializeEmptyAccessPoint(t *testing.T) {
 
 func TestSerializeAccessPoint(t *testing.T) {
 	given := AccessPoint{
-		Password: go_netplan_types.NillableStringOf("pswd"),
+		Password: NillableStringOf("pswd"),
 		Mode:     InfrastructureAccessPointMode(),
 	}
 

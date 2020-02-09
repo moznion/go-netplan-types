@@ -4,13 +4,11 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-
-	go_netplan_types "github.com/moznion/go-netplan-types"
 )
 
 type Address struct {
 	Address   string
-	PrefixLen *go_netplan_types.NillableUint8
+	PrefixLen *NillableUint8
 }
 
 func (addr *Address) MarshalYAML() (interface{}, error) {
@@ -38,7 +36,7 @@ func (addr *Address) UnmarshalYAML(unmarshal func(interface{}) error) error {
 		if err != nil {
 			return err
 		}
-		addr.PrefixLen = go_netplan_types.NillableUint8Of(uint8(prefixLen))
+		addr.PrefixLen = NillableUint8Of(uint8(prefixLen))
 	}
 
 	return nil

@@ -3,8 +3,6 @@ package netplan
 import (
 	"testing"
 
-	go_netplan_types "github.com/moznion/go-netplan-types"
-
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -26,8 +24,8 @@ func TestSerializeEmptyBond(t *testing.T) {
 func TestSerializeBond(t *testing.T) {
 	given := Bond{
 		Device: Device{
-			DHCP4: go_netplan_types.NillableBoolOf(true),
-			DHCP6: go_netplan_types.NillableBoolOf(false),
+			DHCP4: NillableBoolOf(true),
+			DHCP6: NillableBoolOf(false),
 		},
 		Parameters: &BondParameters{
 			Mode: ActiveBackupBondMode(),

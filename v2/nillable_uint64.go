@@ -1,4 +1,4 @@
-package go_netplan_types
+package netplan
 
 type NillableUint64 struct {
 	val        uint64

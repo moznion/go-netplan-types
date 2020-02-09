@@ -3,7 +3,6 @@ package netplan
 import (
 	"testing"
 
-	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -25,12 +24,12 @@ func TestSerializeEmptyPhysicalDevice(t *testing.T) {
 func TestSerializePhysicalDevice(t *testing.T) {
 	given := PhysicalDevice{
 		Match: &Match{
-			Name:       go_netplan_types.NillableStringOf("name"),
+			Name:       NillableStringOf("name"),
 			MacAddress: nil,
 			Driver:     nil,
 		},
-		SetName:   go_netplan_types.NillableStringOf("setname"),
-		WakeOnLAN: go_netplan_types.NillableBoolOf(false),
+		SetName:   NillableStringOf("setname"),
+		WakeOnLAN: NillableBoolOf(false),
 	}
 
 	marshal, err := yaml.Marshal(&given)

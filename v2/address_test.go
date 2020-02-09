@@ -3,7 +3,6 @@ package netplan
 import (
 	"testing"
 
-	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -25,7 +24,7 @@ func TestSerializeEmptyAddress(t *testing.T) {
 func TestSerializeAddress(t *testing.T) {
 	given := Address{
 		Address:   "192.0.2.1",
-		PrefixLen: go_netplan_types.NillableUint8Of(32),
+		PrefixLen: NillableUint8Of(32),
 	}
 
 	marshal, err := yaml.Marshal(&given)

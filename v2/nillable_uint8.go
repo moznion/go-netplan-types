@@ -1,4 +1,4 @@
-package go_netplan_types
+package netplan
 
 type NillableUint8 struct {
 	val        uint8

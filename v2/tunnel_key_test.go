@@ -3,8 +3,6 @@ package netplan
 import (
 	"testing"
 
-	go_netplan_types "github.com/moznion/go-netplan-types"
-
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -25,8 +23,8 @@ func TestSerializeEmptyTunnelKey(t *testing.T) {
 
 func TestSerializeTunnelKey(t *testing.T) {
 	given := TunnelKey{
-		Input:  go_netplan_types.NillableUint64Of(1),
-		Output: go_netplan_types.NillableUint64Of(2),
+		Input:  NillableUint64Of(1),
+		Output: NillableUint64Of(2),
 	}
 
 	marshal, err := yaml.Marshal(&given)
