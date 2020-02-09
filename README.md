@@ -1,4 +1,4 @@
-# go-netplan-types
+# go-netplan-types [![Actions Status](https://github.com/moznion/go-netplan-types/workflows/Go/badge.svg)](https://github.com/moznion/go-netplan-types/actions) [![GoDoc](https://godoc.org/github.com/moznion/go-netplan-types/v2?status.svg)](https://godoc.org/github.com/moznion/go-netplan-types/v2) [![Go Report Card](https://goreportcard.com/badge/github.com/moznion/go-netplan-types)](https://goreportcard.com/report/github.com/moznion/go-netplan-types)
 
 Type definitions for netplan configuration YAML.
 
