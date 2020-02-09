@@ -1,5 +1,6 @@
 package netplan
 
+// AuthMethod represents netplan's authentication method as nillable.
 type AuthMethod struct {
 	val        authMethod
 	isAssigned bool
@@ -13,6 +14,7 @@ const (
 	ttlsAuthMethod            = "ttls"
 )
 
+// TLSAuthMethod returns `tls` authentication method.
 func TLSAuthMethod() *AuthMethod {
 	return &AuthMethod{
 		val:        tlsAuthMethod,
@@ -20,6 +22,7 @@ func TLSAuthMethod() *AuthMethod {
 	}
 }
 
+// PEAPAuthMethod returns `peap` authentication method.
 func PEAPAuthMethod() *AuthMethod {
 	return &AuthMethod{
 		val:        peapAuthMethod,
@@ -27,6 +30,7 @@ func PEAPAuthMethod() *AuthMethod {
 	}
 }
 
+// TTLSAuthMethod returns `ttls` authentication method.
 func TTLSAuthMethod() *AuthMethod {
 	return &AuthMethod{
 		val:        ttlsAuthMethod,
@@ -34,6 +38,8 @@ func TTLSAuthMethod() *AuthMethod {
 	}
 }
 
+// MarshalYAML marshals AuthMethod as YAML.
+// This method used on marshaling YAML internally.
 func (am *AuthMethod) MarshalYAML() (interface{}, error) {
 	if am.isAssigned {
 		return am.val, nil
@@ -41,6 +47,8 @@ func (am *AuthMethod) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals AuthMethod as YAML.
+// This method used on unmarshaling YAML internally.
 func (am *AuthMethod) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val authMethod
 	if err := unmarshal(&val); err != nil {

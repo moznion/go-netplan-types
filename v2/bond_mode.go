@@ -1,5 +1,6 @@
 package netplan
 
+// BondMode represents netplan's bond mode as nillable.
 type BondMode struct {
 	val        bondMode
 	isAssigned bool
@@ -17,6 +18,7 @@ const (
 	balanceALBBondMode            = "balance-alb"
 )
 
+// BalanceRRBondMode returns `balance-rr` bond mode.
 func BalanceRRBondMode() *BondMode {
 	return &BondMode{
 		val:        balanceRRBondMode,
@@ -24,6 +26,7 @@ func BalanceRRBondMode() *BondMode {
 	}
 }
 
+// ActiveBackupBondMode returns `active-backup` bond mode.
 func ActiveBackupBondMode() *BondMode {
 	return &BondMode{
 		val:        activeBackupBondMode,
@@ -31,6 +34,7 @@ func ActiveBackupBondMode() *BondMode {
 	}
 }
 
+// BalanceXORBondMode returns `balance-xor` bond mode.
 func BalanceXORBondMode() *BondMode {
 	return &BondMode{
 		val:        balanceXORBondMode,
@@ -38,6 +42,7 @@ func BalanceXORBondMode() *BondMode {
 	}
 }
 
+// BroadcastBondMode returns `broadcast` bond mode.
 func BroadcastBondMode() *BondMode {
 	return &BondMode{
 		val:        broadcastBondMode,
@@ -45,6 +50,7 @@ func BroadcastBondMode() *BondMode {
 	}
 }
 
+// IEEE8023adBondMode returns `802.3ad` bond mode.
 func IEEE8023adBondMode() *BondMode {
 	return &BondMode{
 		val:        ieee8023adBondMode,
@@ -52,6 +58,7 @@ func IEEE8023adBondMode() *BondMode {
 	}
 }
 
+// BalanceTLBBondMode returns `balance-tlb` bond mode.
 func BalanceTLBBondMode() *BondMode {
 	return &BondMode{
 		val:        balanceTLBBondMode,
@@ -59,6 +66,7 @@ func BalanceTLBBondMode() *BondMode {
 	}
 }
 
+// BalanceALBBondMode returns `balance-alb` bond mode.
 func BalanceALBBondMode() *BondMode {
 	return &BondMode{
 		val:        balanceALBBondMode,
@@ -66,6 +74,8 @@ func BalanceALBBondMode() *BondMode {
 	}
 }
 
+// MarshalYAML marshals BondMode as YAML.
+// This method used on marshaling YAML internally.
 func (bm *BondMode) MarshalYAML() (interface{}, error) {
 	if bm.isAssigned {
 		return bm.val, nil
@@ -73,6 +83,8 @@ func (bm *BondMode) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals BondMode as YAML.
+// This method used on unmarshaling YAML internally.
 func (bm *BondMode) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val bondMode
 	if err := unmarshal(&val); err != nil {

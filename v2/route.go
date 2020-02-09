@@ -1,5 +1,7 @@
 package netplan
 
+// Route represents netplan's route configuration.
+// See also: https://netplan.io/reference#routing
 type Route struct {
 	From   *Address        `yaml:"from,omitempty"`
 	To     *Address        `yaml:"to,omitempty"`

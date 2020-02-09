@@ -2,6 +2,8 @@ package netplan
 
 const networkVersion2 = 2
 
+// NetworkConfig represents netplan's network config.
+// See also: https://netplan.io/reference#properties-for-device-type-ethernets
 type NetworkConfig struct {
 	VersionMustBe2 uint8     `yaml:"version"`
 	Renderer       *Renderer `yaml:"renderer,omitempty"`
@@ -23,11 +25,15 @@ type networkConfigForUnmarshalling struct {
 	VLANs     VLANs     `yaml:"vlans,omitempty"`
 }
 
+// MarshalYAML marshals NetworkConfig as YAML.
+// This method used on marshaling YAML internally.
 func (n *NetworkConfig) MarshalYAML() (interface{}, error) {
 	n.VersionMustBe2 = networkVersion2
 	return n, nil
 }
 
+// UnmarshalYAML unmarshals NetworkConfig as YAML.
+// This method used on unmarshaling YAML internally.
 func (n *NetworkConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var network networkConfigForUnmarshalling
 	if err := unmarshal(&network); err != nil {

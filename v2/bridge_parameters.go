@@ -1,5 +1,7 @@
 package netplan
 
+// BridgeParameters represents netplan's bridge parameters.
+// See also: https://netplan.io/reference#properties-for-device-type-bridges
 type BridgeParameters struct {
 	AgeingTime   *NillableUint64 `yaml:"ageing-time,omitempty"`
 	Priority     *NillableUint32 `yaml:"priority,omitempty"`

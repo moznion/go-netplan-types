@@ -1,5 +1,6 @@
 package netplan
 
+// ARPAllTargets represents netplan's `arp-all-targets` as nillable.
 type ARPAllTargets struct {
 	val        arpAllTargets
 	isAssigned bool
@@ -12,6 +13,7 @@ const (
 	allARPAllTargets               = "all"
 )
 
+// AnyARPAllTargets returns `any` arp-all-targets.
 func AnyARPAllTargets() *ARPAllTargets {
 	return &ARPAllTargets{
 		val:        anyARPAllTargets,
@@ -19,6 +21,7 @@ func AnyARPAllTargets() *ARPAllTargets {
 	}
 }
 
+// AllARPAllTargets returns `all` arp-all-targets.
 func AllARPAllTargets() *ARPAllTargets {
 	return &ARPAllTargets{
 		val:        allARPAllTargets,
@@ -26,6 +29,8 @@ func AllARPAllTargets() *ARPAllTargets {
 	}
 }
 
+// MarshalYAML marshals ARPAllTargets  as YAML.
+// This method used on marshaling YAML internally.
 func (aat *ARPAllTargets) MarshalYAML() (interface{}, error) {
 	if aat.isAssigned {
 		return aat.val, nil
@@ -33,6 +38,8 @@ func (aat *ARPAllTargets) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals ARPAllTargets as YAML.
+// This method used on unmarshaling YAML internally.
 func (aat *ARPAllTargets) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val arpAllTargets
 	if err := unmarshal(&val); err != nil {

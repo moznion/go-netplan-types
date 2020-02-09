@@ -1,5 +1,7 @@
 package netplan
 
+// DHCPOverride represents netplan's DHCP overrides.
+// See also: https://netplan.io/reference#dhcp-overrides
 type DHCPOverride struct {
 	UseDNS       *NillableBool   `yaml:"use-dns,omitempty"`
 	UseNTP       *NillableBool   `yaml:"use-ntp,omitempty"`

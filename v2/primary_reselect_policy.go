@@ -1,5 +1,6 @@
 package netplan
 
+// PrimaryReselectPolicy represents netplan's primary-reselect-policy as nillable.
 type PrimaryReselectPolicy struct {
 	val        primaryReselectPolicy
 	isAssigned bool
@@ -13,12 +14,15 @@ const (
 	failurePrimaryReselectPolicy                       = "failure"
 )
 
+// AlwaysPrimaryReselectPolicy returns `always` primary-reselect-policy.
 func AlwaysPrimaryReselectPolicy() *PrimaryReselectPolicy {
 	return &PrimaryReselectPolicy{
 		val:        alwaysPrimaryReselectPolicy,
 		isAssigned: true,
 	}
 }
+
+// BetterPrimaryReselectPolicy returns `better` primary-reselect-policy.
 func BetterPrimaryReselectPolicy() *PrimaryReselectPolicy {
 	return &PrimaryReselectPolicy{
 		val:        betterPrimaryReselectPolicy,
@@ -26,6 +30,7 @@ func BetterPrimaryReselectPolicy() *PrimaryReselectPolicy {
 	}
 }
 
+// FailurePrimaryReselectPolicy returns `failure` primary-reselect-policy.
 func FailurePrimaryReselectPolicy() *PrimaryReselectPolicy {
 	return &PrimaryReselectPolicy{
 		val:        failurePrimaryReselectPolicy,
@@ -33,6 +38,8 @@ func FailurePrimaryReselectPolicy() *PrimaryReselectPolicy {
 	}
 }
 
+// MarshalYAML marshals PrimaryReselectPolicy as YAML.
+// This method used on marshaling YAML internally.
 func (prp *PrimaryReselectPolicy) MarshalYAML() (interface{}, error) {
 	if prp.isAssigned {
 		return prp.val, nil
@@ -40,6 +47,8 @@ func (prp *PrimaryReselectPolicy) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals PrimaryReselectPolicy as YAML.
+// This method used on unmarshaling YAML internally.
 func (prp *PrimaryReselectPolicy) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val primaryReselectPolicy
 	if err := unmarshal(&val); err != nil {

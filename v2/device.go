@@ -1,5 +1,7 @@
 package netplan
 
+// Device represents netplan's common properties for all device types.
+// See also: https://netplan.io/reference#common-properties-for-all-device-types
 type Device struct {
 	DHCP4             *NillableBool   `yaml:"dhcp4,omitempty"`
 	DHCP6             *NillableBool   `yaml:"dhcp6,omitempty"`

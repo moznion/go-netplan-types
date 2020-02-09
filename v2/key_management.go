@@ -1,5 +1,6 @@
 package netplan
 
+// KeyManagement represents netplan's kind of key-management as nillable.
 type KeyManagement struct {
 	val        keyManagement
 	isAssigned bool
@@ -14,6 +15,7 @@ const (
 	ieee8021xKeyManagement               = "802.1x"
 )
 
+// NoneKeyManagement returns `none` key-management type.
 func NoneKeyManagement() *KeyManagement {
 	return &KeyManagement{
 		val:        noneKeyManagement,
@@ -21,6 +23,7 @@ func NoneKeyManagement() *KeyManagement {
 	}
 }
 
+// PSKKeyManagement returns `psk` key-management type.
 func PSKKeyManagement() *KeyManagement {
 	return &KeyManagement{
 		val:        pskKeyManagement,
@@ -28,6 +31,7 @@ func PSKKeyManagement() *KeyManagement {
 	}
 }
 
+// EAPKeyManagement returns `eap` key-management type.
 func EAPKeyManagement() *KeyManagement {
 	return &KeyManagement{
 		val:        eapKeyManagement,
@@ -35,6 +39,7 @@ func EAPKeyManagement() *KeyManagement {
 	}
 }
 
+// IEEE8021xKeyManagement returns `802.1x` key-management type.
 func IEEE8021xKeyManagement() *KeyManagement {
 	return &KeyManagement{
 		val:        ieee8021xKeyManagement,
@@ -42,6 +47,8 @@ func IEEE8021xKeyManagement() *KeyManagement {
 	}
 }
 
+// MarshalYAML marshals KeyManagement as YAML.
+// This method used on marshaling YAML internally.
 func (km *KeyManagement) MarshalYAML() (interface{}, error) {
 	if km.isAssigned {
 		return km.val, nil
@@ -49,6 +56,8 @@ func (km *KeyManagement) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals KeyManagement as YAML.
+// This method used on unmarshaling YAML internally.
 func (km *KeyManagement) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val keyManagement
 	if err := unmarshal(&val); err != nil {

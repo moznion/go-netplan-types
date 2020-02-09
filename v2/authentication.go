@@ -1,5 +1,7 @@
 package netplan
 
+// Authentication represents netplan's authentication attribute.
+// See also: https://netplan.io/reference#authentication
 type Authentication struct {
 	KeyManagement     *KeyManagement  `yaml:"key-management,omitempty"`
 	Password          *NillableString `yaml:"password,omitempty"`

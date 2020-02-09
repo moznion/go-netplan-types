@@ -1,5 +1,6 @@
 package netplan
 
+// RouteType represents netplan's route type as nillable.
 type RouteType struct {
 	val        routeType
 	isAssigned bool
@@ -14,6 +15,7 @@ const (
 	prohibitRouteType              = "prohibit"
 )
 
+// UnicastRouteType returns `unicast` route type.
 func UnicastRouteType() *RouteType {
 	return &RouteType{
 		val:        unicastRouteType,
@@ -21,6 +23,7 @@ func UnicastRouteType() *RouteType {
 	}
 }
 
+// UnreachableRouteType returns `unreachable` route type.
 func UnreachableRouteType() *RouteType {
 	return &RouteType{
 		val:        unreachableRouteType,
@@ -28,6 +31,7 @@ func UnreachableRouteType() *RouteType {
 	}
 }
 
+// BlackholeRouteType returns `blackhole` route type
 func BlackholeRouteType() *RouteType {
 	return &RouteType{
 		val:        blackholeRouteType,
@@ -35,6 +39,7 @@ func BlackholeRouteType() *RouteType {
 	}
 }
 
+// ProhibitRouteType returns `prohibit` route type
 func ProhibitRouteType() *RouteType {
 	return &RouteType{
 		val:        prohibitRouteType,
@@ -42,6 +47,8 @@ func ProhibitRouteType() *RouteType {
 	}
 }
 
+// MarshalYAML marshals RouteType as YAML.
+// This method used on marshaling YAML internally.
 func (rt *RouteType) MarshalYAML() (interface{}, error) {
 	if rt.isAssigned {
 		return rt.val, nil
@@ -49,6 +56,8 @@ func (rt *RouteType) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals RouteType as YAML.
+// This method used on unmarshaling YAML internally.
 func (rt *RouteType) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val routeType
 	if err := unmarshal(&val); err != nil {

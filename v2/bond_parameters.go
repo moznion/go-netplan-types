@@ -1,5 +1,7 @@
 package netplan
 
+// BondParameters represents netplan's bond parameters.
+// See also: https://netplan.io/reference#properties-for-device-type-bonds
 type BondParameters struct {
 	Mode                  *BondMode              `yaml:"mode,omitempty"`
 	LACPRate              *LACPRate              `yaml:"lacp-rate,omitempty"`

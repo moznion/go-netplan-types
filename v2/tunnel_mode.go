@@ -1,5 +1,6 @@
 package netplan
 
+// TunnelMode represents netplan's tunnel mode as nillable.
 type TunnelMode struct {
 	val        tunnelMode
 	isAssigned bool
@@ -21,6 +22,7 @@ const (
 	isatapTunnelMode               = "isatap"
 )
 
+// SITTunnelMode returns `sit` tunnel mode.
 func SITTunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        sitTunnelMode,
@@ -28,6 +30,7 @@ func SITTunnelMode() *TunnelMode {
 	}
 }
 
+// GRETunnelMode returns `gre` tunnel mode.
 func GRETunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        greTunnelMode,
@@ -35,6 +38,7 @@ func GRETunnelMode() *TunnelMode {
 	}
 }
 
+// IP6GRETunnelMode returns `ip6gre` tunnel mode.
 func IP6GRETunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        ip6GRETunnelMode,
@@ -42,6 +46,7 @@ func IP6GRETunnelMode() *TunnelMode {
 	}
 }
 
+// IPIPTunnelMode returns `ipip` tunnel mode.
 func IPIPTunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        ipIPTunnelMode,
@@ -49,6 +54,7 @@ func IPIPTunnelMode() *TunnelMode {
 	}
 }
 
+// IPIP6TunnelMode returns `ipip6` tunnel mode.
 func IPIP6TunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        ipIP6TunnelMode,
@@ -56,6 +62,7 @@ func IPIP6TunnelMode() *TunnelMode {
 	}
 }
 
+// IP6IP6TunnelMode returns `ip6ip6` tunnel mode.
 func IP6IP6TunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        ip6IP6TunnelMode,
@@ -63,6 +70,7 @@ func IP6IP6TunnelMode() *TunnelMode {
 	}
 }
 
+// VTITunnelMode returns `vti` tunnel mode.
 func VTITunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        vtiTunnelMode,
@@ -70,6 +78,7 @@ func VTITunnelMode() *TunnelMode {
 	}
 }
 
+// VTI6TunnelMode returns `vti6` tunnel mode.
 func VTI6TunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        vti6TunnelMode,
@@ -77,6 +86,7 @@ func VTI6TunnelMode() *TunnelMode {
 	}
 }
 
+// GRETAPTunnelMode returns `gretap` tunnel mode.
 func GRETAPTunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        greTAPTunnelMode,
@@ -84,6 +94,7 @@ func GRETAPTunnelMode() *TunnelMode {
 	}
 }
 
+// IP6GRETAPTunnelMode returns `ip6gretap` tunnel mode.
 func IP6GRETAPTunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        ip6GRETAPTunnelMode,
@@ -91,6 +102,7 @@ func IP6GRETAPTunnelMode() *TunnelMode {
 	}
 }
 
+// ISATAPTunnelMode returns `isatap` tunnel mode.
 func ISATAPTunnelMode() *TunnelMode {
 	return &TunnelMode{
 		val:        isatapTunnelMode,
@@ -98,6 +110,8 @@ func ISATAPTunnelMode() *TunnelMode {
 	}
 }
 
+// MarshalYAML marshals TunnelMode as YAML.
+// This method used on marshaling YAML internally.
 func (tm *TunnelMode) MarshalYAML() (interface{}, error) {
 	if tm.isAssigned {
 		return tm.val, nil
@@ -105,6 +119,8 @@ func (tm *TunnelMode) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals TunnelMode as YAML.
+// This method used on unmarshaling YAML internally.
 func (tm *TunnelMode) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val tunnelMode
 	if err := unmarshal(&val); err != nil {

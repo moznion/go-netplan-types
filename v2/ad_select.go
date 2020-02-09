@@ -1,5 +1,6 @@
 package netplan
 
+// AdSelect represents netplan's `ad-select` as nillable.
 type AdSelect struct {
 	val        adSelect
 	isAssigned bool
@@ -13,6 +14,7 @@ const (
 	countAdSelect              = "count"
 )
 
+// StableAdSelect returns `stable` ad-select.
 func StableAdSelect() *AdSelect {
 	return &AdSelect{
 		val:        stableAdSelect,
@@ -20,6 +22,7 @@ func StableAdSelect() *AdSelect {
 	}
 }
 
+// BandwidthAdSelect returns `bandwidth` ad-select.
 func BandwidthAdSelect() *AdSelect {
 	return &AdSelect{
 		val:        bandwidthAdSelect,
@@ -27,6 +30,7 @@ func BandwidthAdSelect() *AdSelect {
 	}
 }
 
+// CountAdSelect returns `count` ad-select.
 func CountAdSelect() *AdSelect {
 	return &AdSelect{
 		val:        countAdSelect,
@@ -34,6 +38,8 @@ func CountAdSelect() *AdSelect {
 	}
 }
 
+// MarshalYAML marshals AdSelect as YAML.
+// This method used on marshaling YAML internally.
 func (as *AdSelect) MarshalYAML() (interface{}, error) {
 	if as.isAssigned {
 		return as.val, nil
@@ -41,6 +47,8 @@ func (as *AdSelect) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals AdSelect as YAML.
+// This method used on unmarshaling YAML internally.
 func (as *AdSelect) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val adSelect
 	if err := unmarshal(&val); err != nil {

@@ -1,5 +1,6 @@
 package netplan
 
+// ARPValidate represents netplan's `arp-validate` as nillable.
 type ARPValidate struct {
 	val        arpValidate
 	isAssigned bool
@@ -14,6 +15,7 @@ const (
 	allArpValidate                = "all"
 )
 
+// NoneArpValidate returns `none` arp-validate.
 func NoneArpValidate() *ARPValidate {
 	return &ARPValidate{
 		val:        noneArpValidate,
@@ -21,6 +23,7 @@ func NoneArpValidate() *ARPValidate {
 	}
 }
 
+// ActiveArpValidate returns `active` arp-validate.
 func ActiveArpValidate() *ARPValidate {
 	return &ARPValidate{
 		val:        activeArpValidate,
@@ -28,6 +31,7 @@ func ActiveArpValidate() *ARPValidate {
 	}
 }
 
+// BackupArpValidate returns `backup` arp-validate.
 func BackupArpValidate() *ARPValidate {
 	return &ARPValidate{
 		val:        backupArpValidate,
@@ -35,6 +39,7 @@ func BackupArpValidate() *ARPValidate {
 	}
 }
 
+// AllArpValidate returns `all` arp-validate.
 func AllArpValidate() *ARPValidate {
 	return &ARPValidate{
 		val:        allArpValidate,
@@ -42,6 +47,8 @@ func AllArpValidate() *ARPValidate {
 	}
 }
 
+// MarshalYAML marshals ARPValidate as YAML.
+// This method used on marshaling YAML internally.
 func (av *ARPValidate) MarshalYAML() (interface{}, error) {
 	if av.isAssigned {
 		return av.val, nil
@@ -49,6 +56,8 @@ func (av *ARPValidate) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals ARPValidate as YAML.
+// This method used on unmarshaling YAML internally.
 func (av *ARPValidate) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val arpValidate
 	if err := unmarshal(&val); err != nil {

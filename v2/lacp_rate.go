@@ -1,5 +1,6 @@
 package netplan
 
+// LACPRate represents ntplan's lacp-rate as nillable.
 type LACPRate struct {
 	val        lacpRate
 	isAssigned bool
@@ -12,6 +13,7 @@ const (
 	fastLACPRate          = "fast"
 )
 
+// SlowLACPRate returns `slow` lacp-rate.
 func SlowLACPRate() *LACPRate {
 	return &LACPRate{
 		val:        slowLACPRate,
@@ -19,6 +21,7 @@ func SlowLACPRate() *LACPRate {
 	}
 }
 
+// FastLACPRate returns `fast` lacp-rate.
 func FastLACPRate() *LACPRate {
 	return &LACPRate{
 		val:        fastLACPRate,
@@ -26,6 +29,8 @@ func FastLACPRate() *LACPRate {
 	}
 }
 
+// MarshalYAML marshals LACPRate as YAML.
+// This method used on marshaling YAML internally.
 func (lr *LACPRate) MarshalYAML() (interface{}, error) {
 	if lr.isAssigned {
 		return lr.val, nil
@@ -33,6 +38,8 @@ func (lr *LACPRate) MarshalYAML() (interface{}, error) {
 	return nil, nil
 }
 
+// UnmarshalYAML unmarshals LACPRate as YAML.
+// This method used on unmarshaling YAML internally.
 func (lr *LACPRate) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	var val lacpRate
 	if err := unmarshal(&val); err != nil {
