@@ -18,5 +18,6 @@ type Device struct {
 	MTU               *NilableUint64 `yaml:"mtu,omitempty"`
 	Optional          *NilableBool   `yaml:"optional,omitempty"`
 	OptionalAddresses []string       `yaml:"optional-addresses,omitempty"`
+	Renderer          *Renderer      `yaml:"renderer,omitempty"`
 	Routing           `yaml:"-,inline"`
 }
