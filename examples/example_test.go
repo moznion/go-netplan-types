@@ -1,4 +1,4 @@
-package main
+package example
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func main() {
+func Example() {
 	network := netplan.Network{
 		Network: &netplan.NetworkConfig{
 			Ethernets: netplan.Ethernets{
