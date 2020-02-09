@@ -1,7 +1,9 @@
 package netplan
 
+import go_netplan_types "github.com/moznion/go-netplan-types"
+
 type Match struct {
-	Name       *NilableString `yaml:"name,omitempty"`
-	MacAddress *NilableString `yaml:"macaddress,omitempty"`
-	Driver     *NilableString `yaml:"driver,omitempty"`
+	Name       *go_netplan_types.NilableString `yaml:"name,omitempty"`
+	MacAddress *go_netplan_types.NilableString `yaml:"macaddress,omitempty"`
+	Driver     *go_netplan_types.NilableString `yaml:"driver,omitempty"`
 }

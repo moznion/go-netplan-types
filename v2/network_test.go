@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -28,7 +29,7 @@ func TestSerializeNetworkExample1(t *testing.T) {
 			Ethernets: Ethernets{
 				"eno1": &Ethernet{
 					Device: Device{
-						DHCP4: NilableBoolOf(true),
+						DHCP4: go_netplan_types.NilableBoolOf(true),
 					},
 				},
 			},
@@ -61,11 +62,11 @@ func TestSerializeNetworkExample2(t *testing.T) {
 						Addresses: []*Address{
 							{
 								Address:   "10.0.0.10",
-								PrefixLen: NilableUint8Of(24),
+								PrefixLen: go_netplan_types.NilableUint8Of(24),
 							},
 							{
 								Address:   "11.0.0.11",
-								PrefixLen: NilableUint8Of(24),
+								PrefixLen: go_netplan_types.NilableUint8Of(24),
 							},
 						},
 						NameServers: &Nameservers{
@@ -76,22 +77,22 @@ func TestSerializeNetworkExample2(t *testing.T) {
 								{
 									To: &Address{
 										Address:   "0.0.0.0",
-										PrefixLen: NilableUint8Of(0),
+										PrefixLen: go_netplan_types.NilableUint8Of(0),
 									},
 									Via: &Address{
 										Address: "10.0.0.1",
 									},
-									Metric: NilableUint64Of(100),
+									Metric: go_netplan_types.NilableUint64Of(100),
 								},
 								{
 									To: &Address{
 										Address:   "0.0.0.0",
-										PrefixLen: NilableUint8Of(0),
+										PrefixLen: go_netplan_types.NilableUint8Of(0),
 									},
 									Via: &Address{
 										Address: "11.0.0.1",
 									},
-									Metric: NilableUint64Of(100),
+									Metric: go_netplan_types.NilableUint64Of(100),
 								},
 							},
 						},
@@ -139,28 +140,28 @@ func TestSerializeNetworkExample3(t *testing.T) {
 				"id0": &Ethernet{
 					PhysicalDevice: PhysicalDevice{
 						Match: &Match{
-							MacAddress: NilableStringOf("00:11:22:33:44:55"),
+							MacAddress: go_netplan_types.NilableStringOf("00:11:22:33:44:55"),
 						},
-						WakeOnLAN: NilableBoolOf(true),
+						WakeOnLAN: go_netplan_types.NilableBoolOf(true),
 					},
 					Device: Device{
-						DHCP4: NilableBoolOf(true),
+						DHCP4: go_netplan_types.NilableBoolOf(true),
 						Addresses: []*Address{
 							{
 								Address:   "192.168.14.2",
-								PrefixLen: NilableUint8Of(24),
+								PrefixLen: go_netplan_types.NilableUint8Of(24),
 							},
 							{
 								Address:   "192.168.14.3",
-								PrefixLen: NilableUint8Of(24),
+								PrefixLen: go_netplan_types.NilableUint8Of(24),
 							},
 							{
 								Address:   "2001:1::1",
-								PrefixLen: NilableUint8Of(64),
+								PrefixLen: go_netplan_types.NilableUint8Of(64),
 							},
 						},
-						Gateway4: NilableStringOf("192.168.14.1"),
-						Gateway6: NilableStringOf("2001:1::2"),
+						Gateway4: go_netplan_types.NilableStringOf("192.168.14.1"),
+						Gateway6: go_netplan_types.NilableStringOf("2001:1::2"),
 						NameServers: &Nameservers{
 							Search:    []string{"foo.local", "bar.local"},
 							Addresses: []string{"8.8.8.8"},
@@ -170,40 +171,40 @@ func TestSerializeNetworkExample3(t *testing.T) {
 								{
 									To: &Address{
 										Address:   "0.0.0.0",
-										PrefixLen: NilableUint8Of(0),
+										PrefixLen: go_netplan_types.NilableUint8Of(0),
 									},
 									Via: &Address{
 										Address: "11.0.0.1",
 									},
-									Table:  NilableUint64Of(70),
-									OnLink: NilableBoolOf(true),
-									Metric: NilableUint64Of(3),
+									Table:  go_netplan_types.NilableUint64Of(70),
+									OnLink: go_netplan_types.NilableBoolOf(true),
+									Metric: go_netplan_types.NilableUint64Of(3),
 								},
 							},
 							RoutingPolicy: []*RoutingPolicy{
 								{
 									From: &Address{
 										Address:   "192.168.14.2",
-										PrefixLen: NilableUint8Of(24),
+										PrefixLen: go_netplan_types.NilableUint8Of(24),
 									},
 									To: &Address{
 										Address:   "10.0.0.0",
-										PrefixLen: NilableUint8Of(8),
+										PrefixLen: go_netplan_types.NilableUint8Of(8),
 									},
-									Table:    NilableUint64Of(70),
-									Priority: NilableUint32Of(100),
+									Table:    go_netplan_types.NilableUint64Of(70),
+									Priority: go_netplan_types.NilableUint32Of(100),
 								},
 								{
 									From: &Address{
 										Address:   "192.168.14.3",
-										PrefixLen: NilableUint8Of(24),
+										PrefixLen: go_netplan_types.NilableUint8Of(24),
 									},
 									To: &Address{
 										Address:   "20.0.0.0",
-										PrefixLen: NilableUint8Of(8),
+										PrefixLen: go_netplan_types.NilableUint8Of(8),
 									},
-									Table:    NilableUint64Of(70),
-									Priority: NilableUint32Of(50),
+									Table:    go_netplan_types.NilableUint64Of(70),
+									Priority: go_netplan_types.NilableUint32Of(50),
 								},
 							},
 						},
@@ -213,22 +214,22 @@ func TestSerializeNetworkExample3(t *testing.T) {
 				"lom": &Ethernet{
 					PhysicalDevice: PhysicalDevice{
 						Match: &Match{
-							Driver: NilableStringOf("ixgbe"),
+							Driver: go_netplan_types.NilableStringOf("ixgbe"),
 						},
-						SetName: NilableStringOf("lom1"),
+						SetName: go_netplan_types.NilableStringOf("lom1"),
 					},
 					Device: Device{
-						DHCP6: NilableBoolOf(true),
+						DHCP6: go_netplan_types.NilableBoolOf(true),
 					},
 				},
 				"switchports": &Ethernet{
 					PhysicalDevice: PhysicalDevice{
 						Match: &Match{
-							Name: NilableStringOf("enp2*"),
+							Name: go_netplan_types.NilableStringOf("enp2*"),
 						},
 					},
 					Device: Device{
-						MTU: NilableUint64Of(1280),
+						MTU: go_netplan_types.NilableUint64Of(1280),
 					},
 				},
 			},
@@ -236,7 +237,7 @@ func TestSerializeNetworkExample3(t *testing.T) {
 				"all-wlans": &Wifi{
 					AccessPoints: AccessPoints{
 						"Joe's home": &AccessPoint{
-							Password: NilableStringOf("s3kr1t"),
+							Password: go_netplan_types.NilableStringOf("s3kr1t"),
 						},
 					},
 				},
@@ -251,7 +252,7 @@ func TestSerializeNetworkExample3(t *testing.T) {
 			Bridges: Bridges{
 				"br0": &Bridge{
 					Device: Device{
-						DHCP4: NilableBoolOf(true),
+						DHCP4: go_netplan_types.NilableBoolOf(true),
 					},
 					Interfaces: []string{"wlp1s0", "switchports"},
 				},

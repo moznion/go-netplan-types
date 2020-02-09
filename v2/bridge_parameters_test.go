@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -23,14 +24,14 @@ func TestSerializeEmptyBridgeParameters(t *testing.T) {
 
 func TestSerializeBridgeParameters(t *testing.T) {
 	given := BridgeParameters{
-		AgeingTime:   NilableUint64Of(1),
-		Priority:     NilableUint32Of(2),
-		PortPriority: NilableUint8Of(3),
-		ForwardDelay: NilableUint64Of(4),
-		HelloTime:    NilableUint64Of(5),
-		MaxAge:       NilableUint64Of(6),
-		PathCost:     NilableUint64Of(7),
-		STP:          NilableBoolOf(false),
+		AgeingTime:   go_netplan_types.NilableUint64Of(1),
+		Priority:     go_netplan_types.NilableUint32Of(2),
+		PortPriority: go_netplan_types.NilableUint8Of(3),
+		ForwardDelay: go_netplan_types.NilableUint64Of(4),
+		HelloTime:    go_netplan_types.NilableUint64Of(5),
+		MaxAge:       go_netplan_types.NilableUint64Of(6),
+		PathCost:     go_netplan_types.NilableUint64Of(7),
+		STP:          go_netplan_types.NilableBoolOf(false),
 	}
 
 	marshal, err := yaml.Marshal(&given)

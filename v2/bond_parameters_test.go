@@ -3,6 +3,8 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
+
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -25,24 +27,24 @@ func TestSerializeBondParameters(t *testing.T) {
 	given := BondParameters{
 		Mode:                  BalanceRRBondMode(),
 		LACPRate:              FastLACPRate(),
-		MIIMonitorInterval:    NilableUint64Of(1),
-		MinLinks:              NilableUint64Of(2),
+		MIIMonitorInterval:    go_netplan_types.NilableUint64Of(1),
+		MinLinks:              go_netplan_types.NilableUint64Of(2),
 		TransmitHashPolicy:    Layer2TransmitHashPolicy(),
 		AdSelect:              BandwidthAdSelect(),
-		AllSlavesActive:       NilableBoolOf(false),
-		ARPInterval:           NilableUint64Of(3),
+		AllSlavesActive:       go_netplan_types.NilableBoolOf(false),
+		ARPInterval:           go_netplan_types.NilableUint64Of(3),
 		ARPIPTargets:          []string{"foo"},
 		ARPValidate:           ActiveArpValidate(),
 		ARPAllTargets:         AnyARPAllTargets(),
-		UpDelay:               NilableUint64Of(4),
-		DownDelay:             NilableUint64Of(5),
+		UpDelay:               go_netplan_types.NilableUint64Of(4),
+		DownDelay:             go_netplan_types.NilableUint64Of(5),
 		FailOverMACPolicy:     NoneFailOverMACPolicy(),
-		GratuitousARP:         NilableUint8Of(6),
-		PacketsPerSlave:       NilableUint16Of(7),
+		GratuitousARP:         go_netplan_types.NilableUint8Of(6),
+		PacketsPerSlave:       go_netplan_types.NilableUint16Of(7),
 		PrimaryReselectPolicy: AlwaysPrimaryReselectPolicy(),
-		ResendIGMP:            NilableUint8Of(8),
-		LearnPacketInterval:   NilableUint32Of(9),
-		Primary:               NilableStringOf("bar"),
+		ResendIGMP:            go_netplan_types.NilableUint8Of(8),
+		LearnPacketInterval:   go_netplan_types.NilableUint32Of(9),
+		Primary:               go_netplan_types.NilableStringOf("bar"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

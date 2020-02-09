@@ -3,6 +3,8 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
+
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,12 +26,12 @@ func TestSerializeEmptyEthernet(t *testing.T) {
 func TestSerializeEthernet(t *testing.T) {
 	given := Ethernet{
 		Device: Device{
-			DHCP4: NilableBoolOf(true),
-			DHCP6: NilableBoolOf(false),
+			DHCP4: go_netplan_types.NilableBoolOf(true),
+			DHCP6: go_netplan_types.NilableBoolOf(false),
 		},
 		PhysicalDevice: PhysicalDevice{
 			Match: &Match{
-				Name: NilableStringOf("dev-1"),
+				Name: go_netplan_types.NilableStringOf("dev-1"),
 			},
 		},
 		Auth: &Authentication{

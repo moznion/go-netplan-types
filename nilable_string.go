@@ -1,4 +1,4 @@
-package netplan
+package go_netplan_types
 
 type NilableString struct {
 	val        string

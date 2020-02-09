@@ -1,4 +1,4 @@
-package netplan
+package go_netplan_types
 
 type NilableUint16 struct {
 	val        uint16

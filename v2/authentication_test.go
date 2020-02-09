@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,14 +25,14 @@ func TestSerializeEmptyAuthentication(t *testing.T) {
 func TestSerializeAuthentication(t *testing.T) {
 	given := Authentication{
 		KeyManagement:     EAPKeyManagement(),
-		Password:          NilableStringOf("pswd"),
+		Password:          go_netplan_types.NilableStringOf("pswd"),
 		Method:            TLSAuthMethod(),
-		Identity:          NilableStringOf("ident"),
-		AnonymousIdentity: NilableStringOf("anon-ident"),
-		CACertificate:     NilableStringOf("ca-cert"),
-		ClientCertificate: NilableStringOf("client-cert"),
-		ClientKey:         NilableStringOf("client-key"),
-		ClientKeyPassword: NilableStringOf("client-key-pswd"),
+		Identity:          go_netplan_types.NilableStringOf("ident"),
+		AnonymousIdentity: go_netplan_types.NilableStringOf("anon-ident"),
+		CACertificate:     go_netplan_types.NilableStringOf("ca-cert"),
+		ClientCertificate: go_netplan_types.NilableStringOf("client-cert"),
+		ClientKey:         go_netplan_types.NilableStringOf("client-key"),
+		ClientKeyPassword: go_netplan_types.NilableStringOf("client-key-pswd"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

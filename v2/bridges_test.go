@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,12 +25,12 @@ func TestSerializeEmptyBridge(t *testing.T) {
 func TestSerializeBridge(t *testing.T) {
 	given := Bridge{
 		Device: Device{
-			DHCP4: NilableBoolOf(true),
-			DHCP6: NilableBoolOf(false),
+			DHCP4: go_netplan_types.NilableBoolOf(true),
+			DHCP6: go_netplan_types.NilableBoolOf(false),
 		},
 		Interfaces: []string{"vlan1", "vlan2"},
 		Parameters: &BridgeParameters{
-			STP: NilableBoolOf(false),
+			STP: go_netplan_types.NilableBoolOf(false),
 		},
 	}
 

@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,19 +25,19 @@ func TestSerializeEmptyTunnel(t *testing.T) {
 func TestSerializeTunnel(t *testing.T) {
 	given := Tunnel{
 		Device: Device{
-			DHCP4: NilableBoolOf(true),
-			DHCP6: NilableBoolOf(false),
+			DHCP4: go_netplan_types.NilableBoolOf(true),
+			DHCP6: go_netplan_types.NilableBoolOf(false),
 		},
 		Mode:   GRETunnelMode(),
-		Local:  NilableStringOf("192.0.2.1"),
-		Remote: NilableStringOf("192.0.2.2"),
+		Local:  go_netplan_types.NilableStringOf("192.0.2.1"),
+		Remote: go_netplan_types.NilableStringOf("192.0.2.2"),
 		Key: &TunnelKey{
-			Input:  NilableUint64Of(1),
-			Output: NilableUint64Of(2),
+			Input:  go_netplan_types.NilableUint64Of(1),
+			Output: go_netplan_types.NilableUint64Of(2),
 		},
 		Keys: &TunnelKey{
-			Input:  NilableUint64Of(3),
-			Output: NilableUint64Of(4),
+			Input:  go_netplan_types.NilableUint64Of(3),
+			Output: go_netplan_types.NilableUint64Of(4),
 		},
 	}
 

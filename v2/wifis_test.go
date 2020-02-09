@@ -3,6 +3,8 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
+
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,11 +26,11 @@ func TestSerializeEmptyWifi(t *testing.T) {
 func TestSerializeWifi(t *testing.T) {
 	given := Wifi{
 		Device: Device{
-			DHCP4: NilableBoolOf(true),
-			DHCP6: NilableBoolOf(false),
+			DHCP4: go_netplan_types.NilableBoolOf(true),
+			DHCP6: go_netplan_types.NilableBoolOf(false),
 		},
 		PhysicalDevice: PhysicalDevice{
-			WakeOnLAN: NilableBoolOf(false),
+			WakeOnLAN: go_netplan_types.NilableBoolOf(false),
 		},
 		AccessPoints: map[string]*AccessPoint{
 			"opennetwork": {},

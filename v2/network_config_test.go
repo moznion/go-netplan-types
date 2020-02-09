@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	go_netplan_types "github.com/moznion/go-netplan-types"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -27,48 +28,48 @@ func TestSerializeNetworkConfig(t *testing.T) {
 		Ethernets: Ethernets{
 			"eth0": &Ethernet{
 				Device: Device{
-					DHCP4: NilableBoolOf(true),
-					DHCP6: NilableBoolOf(false),
+					DHCP4: go_netplan_types.NilableBoolOf(true),
+					DHCP6: go_netplan_types.NilableBoolOf(false),
 				},
 			},
 		},
 		Wifis: Wifis{
 			"wlan0": &Wifi{
 				Device: Device{
-					DHCP4: NilableBoolOf(true),
-					DHCP6: NilableBoolOf(false),
+					DHCP4: go_netplan_types.NilableBoolOf(true),
+					DHCP6: go_netplan_types.NilableBoolOf(false),
 				},
 			},
 		},
 		Bridges: Bridges{
 			"bridge0": &Bridge{
 				Device: Device{
-					DHCP4: NilableBoolOf(true),
-					DHCP6: NilableBoolOf(false),
+					DHCP4: go_netplan_types.NilableBoolOf(true),
+					DHCP6: go_netplan_types.NilableBoolOf(false),
 				},
 			},
 		},
 		Bonds: Bonds{
 			"bond0": &Bond{
 				Device: Device{
-					DHCP4: NilableBoolOf(true),
-					DHCP6: NilableBoolOf(false),
+					DHCP4: go_netplan_types.NilableBoolOf(true),
+					DHCP6: go_netplan_types.NilableBoolOf(false),
 				},
 			},
 		},
 		Tunnels: Tunnels{
 			"tunnel0": &Tunnel{
 				Device: Device{
-					DHCP4: NilableBoolOf(true),
-					DHCP6: NilableBoolOf(false),
+					DHCP4: go_netplan_types.NilableBoolOf(true),
+					DHCP6: go_netplan_types.NilableBoolOf(false),
 				},
 			},
 		},
 		VLANs: VLANs{
 			"vlan0": &VLAN{
 				Device: Device{
-					DHCP4: NilableBoolOf(true),
-					DHCP6: NilableBoolOf(false),
+					DHCP4: go_netplan_types.NilableBoolOf(true),
+					DHCP6: go_netplan_types.NilableBoolOf(false),
 				},
 			},
 		},
