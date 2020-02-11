@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -25,16 +26,16 @@ func TestSerializeRoutingPolicy(t *testing.T) {
 	given := RoutingPolicy{
 		From: &Address{
 			Address:   "192.0.2.1",
-			PrefixLen: NillableUint8Of(32),
+			PrefixLen: yamlnillable.Uint8Of(32),
 		},
 		To: &Address{
 			Address:   "0.0.0.0",
-			PrefixLen: NillableUint8Of(0),
+			PrefixLen: yamlnillable.Uint8Of(0),
 		},
-		Table:         NillableUint64Of(200),
-		Priority:      NillableUint32Of(100),
-		Mark:          NillableUint64Of(1),
-		TypeOfService: NillableUint8Of(8),
+		Table:         yamlnillable.Uint64Of(200),
+		Priority:      yamlnillable.Uint32Of(100),
+		Mark:          yamlnillable.Uint64Of(1),
+		TypeOfService: yamlnillable.Uint8Of(8),
 	}
 
 	marshal, err := yaml.Marshal(&given)

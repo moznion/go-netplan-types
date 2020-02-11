@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,19 +25,19 @@ func TestSerializeEmptyTunnel(t *testing.T) {
 func TestSerializeTunnel(t *testing.T) {
 	given := Tunnel{
 		Device: Device{
-			DHCP4: NillableBoolOf(true),
-			DHCP6: NillableBoolOf(false),
+			DHCP4: yamlnillable.BoolOf(true),
+			DHCP6: yamlnillable.BoolOf(false),
 		},
 		Mode:   GRETunnelMode(),
-		Local:  NillableStringOf("192.0.2.1"),
-		Remote: NillableStringOf("192.0.2.2"),
+		Local:  yamlnillable.StringOf("192.0.2.1"),
+		Remote: yamlnillable.StringOf("192.0.2.2"),
 		Key: &TunnelKey{
-			Input:  NillableUint64Of(1),
-			Output: NillableUint64Of(2),
+			Input:  yamlnillable.Uint64Of(1),
+			Output: yamlnillable.Uint64Of(2),
 		},
 		Keys: &TunnelKey{
-			Input:  NillableUint64Of(3),
-			Output: NillableUint64Of(4),
+			Input:  yamlnillable.Uint64Of(3),
+			Output: yamlnillable.Uint64Of(4),
 		},
 	}
 

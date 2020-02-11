@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -23,8 +24,8 @@ func TestSerializeEmptyTunnelKey(t *testing.T) {
 
 func TestSerializeTunnelKey(t *testing.T) {
 	given := TunnelKey{
-		Input:  NillableUint64Of(1),
-		Output: NillableUint64Of(2),
+		Input:  yamlnillable.Uint64Of(1),
+		Output: yamlnillable.Uint64Of(2),
 	}
 
 	marshal, err := yaml.Marshal(&given)

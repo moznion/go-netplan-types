@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,14 +25,14 @@ func TestSerializeEmptyAuthentication(t *testing.T) {
 func TestSerializeAuthentication(t *testing.T) {
 	given := Authentication{
 		KeyManagement:     EAPKeyManagement(),
-		Password:          NillableStringOf("pswd"),
+		Password:          yamlnillable.StringOf("pswd"),
 		Method:            TLSAuthMethod(),
-		Identity:          NillableStringOf("ident"),
-		AnonymousIdentity: NillableStringOf("anon-ident"),
-		CACertificate:     NillableStringOf("ca-cert"),
-		ClientCertificate: NillableStringOf("client-cert"),
-		ClientKey:         NillableStringOf("client-key"),
-		ClientKeyPassword: NillableStringOf("client-key-pswd"),
+		Identity:          yamlnillable.StringOf("ident"),
+		AnonymousIdentity: yamlnillable.StringOf("anon-ident"),
+		CACertificate:     yamlnillable.StringOf("ca-cert"),
+		ClientCertificate: yamlnillable.StringOf("client-cert"),
+		ClientKey:         yamlnillable.StringOf("client-key"),
+		ClientKeyPassword: yamlnillable.StringOf("client-key-pswd"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

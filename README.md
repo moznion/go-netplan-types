@@ -16,6 +16,7 @@ import (
 	"fmt"
 
 	"github.com/moznion/go-netplan-types/v2"
+	"github.com/moznion/go-yaml-nillable"
 	"gopkg.in/yaml.v2"
 )
 
@@ -25,7 +26,7 @@ func main() {
 			Ethernets: netplan.Ethernets{
 				"eno1": &netplan.Ethernet{
 					Device: netplan.Device{
-						DHCP4: netplan.NillableBoolOf(true),
+						DHCP4: yamlnillable.BoolOf(true),
 					},
 				},
 			},

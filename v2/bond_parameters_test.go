@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -25,24 +26,24 @@ func TestSerializeBondParameters(t *testing.T) {
 	given := BondParameters{
 		Mode:                  BalanceRRBondMode(),
 		LACPRate:              FastLACPRate(),
-		MIIMonitorInterval:    NillableUint64Of(1),
-		MinLinks:              NillableUint64Of(2),
+		MIIMonitorInterval:    yamlnillable.Uint64Of(1),
+		MinLinks:              yamlnillable.Uint64Of(2),
 		TransmitHashPolicy:    Layer2TransmitHashPolicy(),
 		AdSelect:              BandwidthAdSelect(),
-		AllSlavesActive:       NillableBoolOf(false),
-		ARPInterval:           NillableUint64Of(3),
+		AllSlavesActive:       yamlnillable.BoolOf(false),
+		ARPInterval:           yamlnillable.Uint64Of(3),
 		ARPIPTargets:          []string{"foo"},
 		ARPValidate:           ActiveArpValidate(),
 		ARPAllTargets:         AnyARPAllTargets(),
-		UpDelay:               NillableUint64Of(4),
-		DownDelay:             NillableUint64Of(5),
+		UpDelay:               yamlnillable.Uint64Of(4),
+		DownDelay:             yamlnillable.Uint64Of(5),
 		FailOverMACPolicy:     NoneFailOverMACPolicy(),
-		GratuitousARP:         NillableUint8Of(6),
-		PacketsPerSlave:       NillableUint16Of(7),
+		GratuitousARP:         yamlnillable.Uint8Of(6),
+		PacketsPerSlave:       yamlnillable.Uint16Of(7),
 		PrimaryReselectPolicy: AlwaysPrimaryReselectPolicy(),
-		ResendIGMP:            NillableUint8Of(8),
-		LearnPacketInterval:   NillableUint32Of(9),
-		Primary:               NillableStringOf("bar"),
+		ResendIGMP:            yamlnillable.Uint8Of(8),
+		LearnPacketInterval:   yamlnillable.Uint32Of(9),
+		Primary:               yamlnillable.StringOf("bar"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

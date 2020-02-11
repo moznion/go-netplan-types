@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,7 +25,7 @@ func TestSerializeEmptyAddress(t *testing.T) {
 func TestSerializeAddress(t *testing.T) {
 	given := Address{
 		Address:   "192.0.2.1",
-		PrefixLen: NillableUint8Of(32),
+		PrefixLen: yamlnillable.Uint8Of(32),
 	}
 
 	marshal, err := yaml.Marshal(&given)

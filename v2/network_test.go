@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -28,7 +29,7 @@ func TestSerializeNetworkExample1(t *testing.T) {
 			Ethernets: Ethernets{
 				"eno1": &Ethernet{
 					Device: Device{
-						DHCP4: NillableBoolOf(true),
+						DHCP4: yamlnillable.BoolOf(true),
 					},
 				},
 			},
@@ -61,11 +62,11 @@ func TestSerializeNetworkExample2(t *testing.T) {
 						Addresses: []*Address{
 							{
 								Address:   "10.0.0.10",
-								PrefixLen: NillableUint8Of(24),
+								PrefixLen: yamlnillable.Uint8Of(24),
 							},
 							{
 								Address:   "11.0.0.11",
-								PrefixLen: NillableUint8Of(24),
+								PrefixLen: yamlnillable.Uint8Of(24),
 							},
 						},
 						NameServers: &Nameservers{
@@ -76,22 +77,22 @@ func TestSerializeNetworkExample2(t *testing.T) {
 								{
 									To: &Address{
 										Address:   "0.0.0.0",
-										PrefixLen: NillableUint8Of(0),
+										PrefixLen: yamlnillable.Uint8Of(0),
 									},
 									Via: &Address{
 										Address: "10.0.0.1",
 									},
-									Metric: NillableUint64Of(100),
+									Metric: yamlnillable.Uint64Of(100),
 								},
 								{
 									To: &Address{
 										Address:   "0.0.0.0",
-										PrefixLen: NillableUint8Of(0),
+										PrefixLen: yamlnillable.Uint8Of(0),
 									},
 									Via: &Address{
 										Address: "11.0.0.1",
 									},
-									Metric: NillableUint64Of(100),
+									Metric: yamlnillable.Uint64Of(100),
 								},
 							},
 						},
@@ -139,28 +140,28 @@ func TestSerializeNetworkExample3(t *testing.T) {
 				"id0": &Ethernet{
 					PhysicalDevice: PhysicalDevice{
 						Match: &Match{
-							MacAddress: NillableStringOf("00:11:22:33:44:55"),
+							MacAddress: yamlnillable.StringOf("00:11:22:33:44:55"),
 						},
-						WakeOnLAN: NillableBoolOf(true),
+						WakeOnLAN: yamlnillable.BoolOf(true),
 					},
 					Device: Device{
-						DHCP4: NillableBoolOf(true),
+						DHCP4: yamlnillable.BoolOf(true),
 						Addresses: []*Address{
 							{
 								Address:   "192.168.14.2",
-								PrefixLen: NillableUint8Of(24),
+								PrefixLen: yamlnillable.Uint8Of(24),
 							},
 							{
 								Address:   "192.168.14.3",
-								PrefixLen: NillableUint8Of(24),
+								PrefixLen: yamlnillable.Uint8Of(24),
 							},
 							{
 								Address:   "2001:1::1",
-								PrefixLen: NillableUint8Of(64),
+								PrefixLen: yamlnillable.Uint8Of(64),
 							},
 						},
-						Gateway4: NillableStringOf("192.168.14.1"),
-						Gateway6: NillableStringOf("2001:1::2"),
+						Gateway4: yamlnillable.StringOf("192.168.14.1"),
+						Gateway6: yamlnillable.StringOf("2001:1::2"),
 						NameServers: &Nameservers{
 							Search:    []string{"foo.local", "bar.local"},
 							Addresses: []string{"8.8.8.8"},
@@ -170,40 +171,40 @@ func TestSerializeNetworkExample3(t *testing.T) {
 								{
 									To: &Address{
 										Address:   "0.0.0.0",
-										PrefixLen: NillableUint8Of(0),
+										PrefixLen: yamlnillable.Uint8Of(0),
 									},
 									Via: &Address{
 										Address: "11.0.0.1",
 									},
-									Table:  NillableUint64Of(70),
-									OnLink: NillableBoolOf(true),
-									Metric: NillableUint64Of(3),
+									Table:  yamlnillable.Uint64Of(70),
+									OnLink: yamlnillable.BoolOf(true),
+									Metric: yamlnillable.Uint64Of(3),
 								},
 							},
 							RoutingPolicy: []*RoutingPolicy{
 								{
 									From: &Address{
 										Address:   "192.168.14.2",
-										PrefixLen: NillableUint8Of(24),
+										PrefixLen: yamlnillable.Uint8Of(24),
 									},
 									To: &Address{
 										Address:   "10.0.0.0",
-										PrefixLen: NillableUint8Of(8),
+										PrefixLen: yamlnillable.Uint8Of(8),
 									},
-									Table:    NillableUint64Of(70),
-									Priority: NillableUint32Of(100),
+									Table:    yamlnillable.Uint64Of(70),
+									Priority: yamlnillable.Uint32Of(100),
 								},
 								{
 									From: &Address{
 										Address:   "192.168.14.3",
-										PrefixLen: NillableUint8Of(24),
+										PrefixLen: yamlnillable.Uint8Of(24),
 									},
 									To: &Address{
 										Address:   "20.0.0.0",
-										PrefixLen: NillableUint8Of(8),
+										PrefixLen: yamlnillable.Uint8Of(8),
 									},
-									Table:    NillableUint64Of(70),
-									Priority: NillableUint32Of(50),
+									Table:    yamlnillable.Uint64Of(70),
+									Priority: yamlnillable.Uint32Of(50),
 								},
 							},
 						},
@@ -213,22 +214,22 @@ func TestSerializeNetworkExample3(t *testing.T) {
 				"lom": &Ethernet{
 					PhysicalDevice: PhysicalDevice{
 						Match: &Match{
-							Driver: NillableStringOf("ixgbe"),
+							Driver: yamlnillable.StringOf("ixgbe"),
 						},
-						SetName: NillableStringOf("lom1"),
+						SetName: yamlnillable.StringOf("lom1"),
 					},
 					Device: Device{
-						DHCP6: NillableBoolOf(true),
+						DHCP6: yamlnillable.BoolOf(true),
 					},
 				},
 				"switchports": &Ethernet{
 					PhysicalDevice: PhysicalDevice{
 						Match: &Match{
-							Name: NillableStringOf("enp2*"),
+							Name: yamlnillable.StringOf("enp2*"),
 						},
 					},
 					Device: Device{
-						MTU: NillableUint64Of(1280),
+						MTU: yamlnillable.Uint64Of(1280),
 					},
 				},
 			},
@@ -236,7 +237,7 @@ func TestSerializeNetworkExample3(t *testing.T) {
 				"all-wlans": &Wifi{
 					AccessPoints: AccessPoints{
 						"Joe's home": &AccessPoint{
-							Password: NillableStringOf("s3kr1t"),
+							Password: yamlnillable.StringOf("s3kr1t"),
 						},
 					},
 				},
@@ -251,7 +252,7 @@ func TestSerializeNetworkExample3(t *testing.T) {
 			Bridges: Bridges{
 				"br0": &Bridge{
 					Device: Device{
-						DHCP4: NillableBoolOf(true),
+						DHCP4: yamlnillable.BoolOf(true),
 					},
 					Interfaces: []string{"wlp1s0", "switchports"},
 				},

@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -27,48 +28,48 @@ func TestSerializeNetworkConfig(t *testing.T) {
 		Ethernets: Ethernets{
 			"eth0": &Ethernet{
 				Device: Device{
-					DHCP4: NillableBoolOf(true),
-					DHCP6: NillableBoolOf(false),
+					DHCP4: yamlnillable.BoolOf(true),
+					DHCP6: yamlnillable.BoolOf(false),
 				},
 			},
 		},
 		Wifis: Wifis{
 			"wlan0": &Wifi{
 				Device: Device{
-					DHCP4: NillableBoolOf(true),
-					DHCP6: NillableBoolOf(false),
+					DHCP4: yamlnillable.BoolOf(true),
+					DHCP6: yamlnillable.BoolOf(false),
 				},
 			},
 		},
 		Bridges: Bridges{
 			"bridge0": &Bridge{
 				Device: Device{
-					DHCP4: NillableBoolOf(true),
-					DHCP6: NillableBoolOf(false),
+					DHCP4: yamlnillable.BoolOf(true),
+					DHCP6: yamlnillable.BoolOf(false),
 				},
 			},
 		},
 		Bonds: Bonds{
 			"bond0": &Bond{
 				Device: Device{
-					DHCP4: NillableBoolOf(true),
-					DHCP6: NillableBoolOf(false),
+					DHCP4: yamlnillable.BoolOf(true),
+					DHCP6: yamlnillable.BoolOf(false),
 				},
 			},
 		},
 		Tunnels: Tunnels{
 			"tunnel0": &Tunnel{
 				Device: Device{
-					DHCP4: NillableBoolOf(true),
-					DHCP6: NillableBoolOf(false),
+					DHCP4: yamlnillable.BoolOf(true),
+					DHCP6: yamlnillable.BoolOf(false),
 				},
 			},
 		},
 		VLANs: VLANs{
 			"vlan0": &VLAN{
 				Device: Device{
-					DHCP4: NillableBoolOf(true),
-					DHCP6: NillableBoolOf(false),
+					DHCP4: yamlnillable.BoolOf(true),
+					DHCP6: yamlnillable.BoolOf(false),
 				},
 			},
 		},

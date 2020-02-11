@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,11 +25,11 @@ func TestSerializeEmptyVLAN(t *testing.T) {
 func TestSerializeVLAN(t *testing.T) {
 	given := VLAN{
 		Device: Device{
-			DHCP4: NillableBoolOf(true),
-			DHCP6: NillableBoolOf(false),
+			DHCP4: yamlnillable.BoolOf(true),
+			DHCP6: yamlnillable.BoolOf(false),
 		},
-		ID:   NillableUint16Of(1),
-		Link: NillableStringOf("link-1"),
+		ID:   yamlnillable.Uint16Of(1),
+		Link: yamlnillable.StringOf("link-1"),
 	}
 
 	marshal, err := yaml.Marshal(&given)

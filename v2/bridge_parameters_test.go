@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -23,14 +24,14 @@ func TestSerializeEmptyBridgeParameters(t *testing.T) {
 
 func TestSerializeBridgeParameters(t *testing.T) {
 	given := BridgeParameters{
-		AgeingTime:   NillableUint64Of(1),
-		Priority:     NillableUint32Of(2),
-		PortPriority: NillableUint8Of(3),
-		ForwardDelay: NillableUint64Of(4),
-		HelloTime:    NillableUint64Of(5),
-		MaxAge:       NillableUint64Of(6),
-		PathCost:     NillableUint64Of(7),
-		STP:          NillableBoolOf(false),
+		AgeingTime:   yamlnillable.Uint64Of(1),
+		Priority:     yamlnillable.Uint32Of(2),
+		PortPriority: yamlnillable.Uint8Of(3),
+		ForwardDelay: yamlnillable.Uint64Of(4),
+		HelloTime:    yamlnillable.Uint64Of(5),
+		MaxAge:       yamlnillable.Uint64Of(6),
+		PathCost:     yamlnillable.Uint64Of(7),
+		STP:          yamlnillable.BoolOf(false),
 	}
 
 	marshal, err := yaml.Marshal(&given)

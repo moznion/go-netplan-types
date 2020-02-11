@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -23,64 +24,64 @@ func TestSerializeEmptyDevice(t *testing.T) {
 
 func TestSerializeDevice(t *testing.T) {
 	given := Device{
-		DHCP4:          NillableBoolOf(true),
-		DHCP6:          NillableBoolOf(false),
-		IPv6Privacy:    NillableBoolOf(false),
+		DHCP4:          yamlnillable.BoolOf(true),
+		DHCP6:          yamlnillable.BoolOf(false),
+		IPv6Privacy:    yamlnillable.BoolOf(false),
 		LinkLocal:      []LinkLocal{IPv4LinkLocal},
-		Critical:       NillableBoolOf(true),
-		DHCPIdentifier: NillableStringOf("mac"),
+		Critical:       yamlnillable.BoolOf(true),
+		DHCPIdentifier: yamlnillable.StringOf("mac"),
 		DHCP4Overrides: &DHCPOverride{
-			UseDNS:       NillableBoolOf(true),
-			UseNTP:       NillableBoolOf(true),
-			SendHostname: NillableBoolOf(true),
-			UseHostname:  NillableBoolOf(true),
-			UseMTU:       NillableBoolOf(true),
-			Hostname:     NillableStringOf("host"),
-			UseRoutes:    NillableBoolOf(true),
-			RouteMetric:  NillableUint64Of(100),
+			UseDNS:       yamlnillable.BoolOf(true),
+			UseNTP:       yamlnillable.BoolOf(true),
+			SendHostname: yamlnillable.BoolOf(true),
+			UseHostname:  yamlnillable.BoolOf(true),
+			UseMTU:       yamlnillable.BoolOf(true),
+			Hostname:     yamlnillable.StringOf("host"),
+			UseRoutes:    yamlnillable.BoolOf(true),
+			RouteMetric:  yamlnillable.Uint64Of(100),
 		},
 		DHCP6Overrides: nil,
-		AcceptRA:       NillableBoolOf(false),
+		AcceptRA:       yamlnillable.BoolOf(false),
 		Addresses: []*Address{
 			{
 				Address:   "192.0.2.1",
-				PrefixLen: NillableUint8Of(32),
+				PrefixLen: yamlnillable.Uint8Of(32),
 			},
 			{
 				Address:   "192.0.2.2",
-				PrefixLen: NillableUint8Of(32),
+				PrefixLen: yamlnillable.Uint8Of(32),
 			},
 		},
-		Gateway4: NillableStringOf("192.0.2.254"),
+		Gateway4: yamlnillable.StringOf("192.0.2.254"),
 		Gateway6: nil,
 		NameServers: &Nameservers{
 			Search:    []string{"domain-1", "domain-2"},
 			Addresses: []string{"8.8.8.8"},
 		},
-		MacAddress:        NillableStringOf("de:ad:be:ef:ca:fe"),
-		MTU:               NillableUint64Of(1500),
-		Optional:          NillableBoolOf(false),
+		MacAddress:        yamlnillable.StringOf("de:ad:be:ef:ca:fe"),
+		MTU:               yamlnillable.Uint64Of(1500),
+		Optional:          yamlnillable.BoolOf(false),
 		OptionalAddresses: nil,
 		Routing: Routing{
 			Routes: []*Route{
 				{
 					From: &Address{
 						Address:   "198.0.2.1",
-						PrefixLen: NillableUint8Of(32),
+						PrefixLen: yamlnillable.Uint8Of(32),
 					},
 					To: &Address{
 						Address:   "0.0.0.0",
-						PrefixLen: NillableUint8Of(0),
+						PrefixLen: yamlnillable.Uint8Of(0),
 					},
 				},
 				{
 					From: &Address{
 						Address:   "198.0.2.2",
-						PrefixLen: NillableUint8Of(32),
+						PrefixLen: yamlnillable.Uint8Of(32),
 					},
 					To: &Address{
 						Address:   "0.0.0.0",
-						PrefixLen: NillableUint8Of(0),
+						PrefixLen: yamlnillable.Uint8Of(0),
 					},
 				},
 			},
@@ -88,7 +89,7 @@ func TestSerializeDevice(t *testing.T) {
 				{
 					From: &Address{
 						Address:   "192.0.2.0",
-						PrefixLen: NillableUint8Of(24),
+						PrefixLen: yamlnillable.Uint8Of(24),
 					},
 				},
 			},

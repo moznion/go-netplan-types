@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 )
 
 // Address represents an IP address.
@@ -11,17 +13,17 @@ import (
 // on the other hand, once `PrefixLen` hasn't existed the marshaled value will be `{Address}`.
 type Address struct {
 	Address   string
-	PrefixLen *NillableUint8
+	PrefixLen *yamlnillable.Uint8
 }
 
 // MarshalYAML marshals Address as YAML.
 // This method used on marshaling YAML internally.
 func (addr *Address) MarshalYAML() (interface{}, error) {
-	if addr.PrefixLen == nil || !addr.PrefixLen.isAssigned {
+	if addr.PrefixLen == nil || !addr.PrefixLen.IsAssigned {
 		return addr.Address, nil
 	}
 
-	return fmt.Sprintf("%s/%d", addr.Address, addr.PrefixLen.val), nil
+	return fmt.Sprintf("%s/%d", addr.Address, addr.PrefixLen.Val), nil
 }
 
 // UnmarshalYAML unmarshals Address as YAML.
@@ -43,7 +45,7 @@ func (addr *Address) UnmarshalYAML(unmarshal func(interface{}) error) error {
 		if err != nil {
 			return err
 		}
-		addr.PrefixLen = NillableUint8Of(uint8(prefixLen))
+		addr.PrefixLen = yamlnillable.Uint8Of(uint8(prefixLen))
 	}
 
 	return nil

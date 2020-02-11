@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -23,7 +24,7 @@ func TestSerializeEmptyAccessPoint(t *testing.T) {
 
 func TestSerializeAccessPoint(t *testing.T) {
 	given := AccessPoint{
-		Password: NillableStringOf("pswd"),
+		Password: yamlnillable.StringOf("pswd"),
 		Mode:     InfrastructureAccessPointMode(),
 	}
 

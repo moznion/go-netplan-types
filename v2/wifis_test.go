@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,11 +25,11 @@ func TestSerializeEmptyWifi(t *testing.T) {
 func TestSerializeWifi(t *testing.T) {
 	given := Wifi{
 		Device: Device{
-			DHCP4: NillableBoolOf(true),
-			DHCP6: NillableBoolOf(false),
+			DHCP4: yamlnillable.BoolOf(true),
+			DHCP6: yamlnillable.BoolOf(false),
 		},
 		PhysicalDevice: PhysicalDevice{
-			WakeOnLAN: NillableBoolOf(false),
+			WakeOnLAN: yamlnillable.BoolOf(false),
 		},
 		AccessPoints: map[string]*AccessPoint{
 			"opennetwork": {},

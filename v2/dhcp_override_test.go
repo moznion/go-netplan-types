@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -23,14 +24,14 @@ func TestSerializeEmptyDHCPOverride(t *testing.T) {
 
 func TestSerializeDHCPOverride(t *testing.T) {
 	given := DHCPOverride{
-		UseDNS:       NillableBoolOf(false),
-		UseNTP:       NillableBoolOf(true),
-		SendHostname: NillableBoolOf(false),
-		UseHostname:  NillableBoolOf(true),
-		UseMTU:       NillableBoolOf(false),
-		Hostname:     NillableStringOf("host"),
-		UseRoutes:    NillableBoolOf(true),
-		RouteMetric:  NillableUint64Of(100),
+		UseDNS:       yamlnillable.BoolOf(false),
+		UseNTP:       yamlnillable.BoolOf(true),
+		SendHostname: yamlnillable.BoolOf(false),
+		UseHostname:  yamlnillable.BoolOf(true),
+		UseMTU:       yamlnillable.BoolOf(false),
+		Hostname:     yamlnillable.StringOf("host"),
+		UseRoutes:    yamlnillable.BoolOf(true),
+		RouteMetric:  yamlnillable.Uint64Of(100),
 	}
 
 	marshal, err := yaml.Marshal(&given)

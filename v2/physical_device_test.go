@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -24,12 +25,12 @@ func TestSerializeEmptyPhysicalDevice(t *testing.T) {
 func TestSerializePhysicalDevice(t *testing.T) {
 	given := PhysicalDevice{
 		Match: &Match{
-			Name:       NillableStringOf("name"),
+			Name:       yamlnillable.StringOf("name"),
 			MacAddress: nil,
 			Driver:     nil,
 		},
-		SetName:   NillableStringOf("setname"),
-		WakeOnLAN: NillableBoolOf(false),
+		SetName:   yamlnillable.StringOf("setname"),
+		WakeOnLAN: yamlnillable.BoolOf(false),
 	}
 
 	marshal, err := yaml.Marshal(&given)

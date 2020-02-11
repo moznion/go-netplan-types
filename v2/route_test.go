@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -25,20 +26,20 @@ func TestSerializeRoute(t *testing.T) {
 	given := Route{
 		From: &Address{
 			Address:   "192.0.2.1",
-			PrefixLen: NillableUint8Of(32),
+			PrefixLen: yamlnillable.Uint8Of(32),
 		},
 		To: &Address{
 			Address:   "0.0.0.0",
-			PrefixLen: NillableUint8Of(0),
+			PrefixLen: yamlnillable.Uint8Of(0),
 		},
 		Via: &Address{
 			Address: "192.0.2.2",
 		},
-		OnLink: NillableBoolOf(false),
-		Metric: NillableUint64Of(100),
+		OnLink: yamlnillable.BoolOf(false),
+		Metric: yamlnillable.Uint64Of(100),
 		Type:   UnicastRouteType(),
 		Scope:  LinkRouteScope(),
-		Table:  NillableUint64Of(200),
+		Table:  yamlnillable.Uint64Of(200),
 	}
 
 	marshal, err := yaml.Marshal(&given)

@@ -3,6 +3,7 @@ package netplan
 import (
 	"testing"
 
+	yamlnillable "github.com/moznion/go-yaml-nillable"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )
@@ -23,9 +24,9 @@ func TestSerializeEmptyMatch(t *testing.T) {
 
 func TestSerializeMatch(t *testing.T) {
 	given := Match{
-		Name:       NillableStringOf("name"),
-		MacAddress: NillableStringOf(""),
-		Driver:     NillableStringOf("driver"),
+		Name:       yamlnillable.StringOf("name"),
+		MacAddress: yamlnillable.StringOf(""),
+		Driver:     yamlnillable.StringOf("driver"),
 	}
 
 	marshal, err := yaml.Marshal(&given)
