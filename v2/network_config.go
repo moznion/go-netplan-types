@@ -15,6 +15,17 @@ type NetworkConfig struct {
 	VLANs          VLANs     `yaml:"vlans,omitempty"`
 }
 
+type NetworkConfigForMarshalling struct {
+	VersionMustBe2 uint8     `yaml:"version"`
+	Renderer       *Renderer `yaml:"renderer,omitempty"`
+	Ethernets      Ethernets `yaml:"ethernets,omitempty"`
+	Wifis          Wifis     `yaml:"wifis,omitempty"`
+	Bridges        Bridges   `yaml:"bridges,omitempty"`
+	Bonds          Bonds     `yaml:"bonds,omitempty"`
+	Tunnels        Tunnels   `yaml:"tunnels,omitempty"`
+	VLANs          VLANs     `yaml:"vlans,omitempty"`
+}
+
 type networkConfigForUnmarshalling struct {
 	Renderer  *Renderer `yaml:"renderer,omitempty"`
 	Ethernets Ethernets `yaml:"ethernets,omitempty"`
@@ -28,8 +39,18 @@ type networkConfigForUnmarshalling struct {
 // MarshalYAML marshals NetworkConfig as YAML.
 // This method used on marshaling YAML internally.
 func (n *NetworkConfig) MarshalYAML() (interface{}, error) {
-	n.VersionMustBe2 = networkVersion2
-	return n, nil
+	nm := NetworkConfigForMarshalling{
+		VersionMustBe2: networkVersion2,
+		Renderer:       n.Renderer,
+		Ethernets:      n.Ethernets,
+		Wifis:          n.Wifis,
+		Bridges:        n.Bridges,
+		Bonds:          n.Bonds,
+		Tunnels:        n.Tunnels,
+		VLANs:          n.VLANs,
+	}
+
+	return nm, nil
 }
 
 // UnmarshalYAML unmarshals NetworkConfig as YAML.
